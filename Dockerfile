@@ -1,2 +1,2 @@
-FROM node:18.7.0-alpine3.16
+FROM node:16.16.0-alpine
 WORKDIR /frontend

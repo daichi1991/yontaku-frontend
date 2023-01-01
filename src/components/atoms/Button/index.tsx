@@ -2,8 +2,12 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Button } from '@mui/material'
 
-export const ContainedButton: React.FC = () => {
-  return <Button variant="contained">Contained</Button>
+interface Props {
+  buttonText: string
+}
+
+export const ContainedButton: React.FC<Props> = (props: Props) => {
+  return <Button variant="contained">{props.buttonText}</Button>
 }
 
 export const AccountButton: React.FC = () => {

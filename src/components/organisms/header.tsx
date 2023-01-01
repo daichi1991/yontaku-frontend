@@ -9,6 +9,7 @@ import Switch from '@mui/material/Switch'
 import Toolbar from '@mui/material/Toolbar'
 import * as React from 'react'
 import { AccountButton, MenuButton } from '../atoms/Button/Index'
+import { HeaderLink } from '../atoms/Link/Index'
 import { Title } from '../atoms/Title/Index'
 
 export const Header: React.FC = () => {
@@ -73,7 +74,9 @@ export const Header: React.FC = () => {
               </Menu>
             </div>
           ) : (
-            <div>ログイン</div>
+            <div>
+              <HeaderLink linkTo="/signin" linkText="ログイン" />
+            </div>
           )}
         </Toolbar>
       </AppBar>

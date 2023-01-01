@@ -20,4 +20,6 @@ rules:
     'react/react-in-jsx-scope': 'off',
     'no-void': ['error', { allowAsStatement: true }],
     'semi': 'off',
+    'comma-dangle': ['error', 'never'],
+    'multiline-ternary': ['error', 'never']
   }

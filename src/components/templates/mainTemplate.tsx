@@ -1,4 +1,4 @@
-import { Header } from '../organisms/header'
+import { Header } from '../organisms/Header'
 
 export const MainTemplate: React.FC = () => {
   return (

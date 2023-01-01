@@ -8,8 +8,8 @@ import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 import Toolbar from '@mui/material/Toolbar'
 import * as React from 'react'
-import { AccountButton, MenuButton } from '../atoms/Button/index'
-import { Title } from '../atoms/Title'
+import { AccountButton, MenuButton } from '../atoms/Button/Index'
+import { Title } from '../atoms/Title/Index'
 
 export const Header: React.FC = () => {
   const [auth, setAuth] = React.useState(true)

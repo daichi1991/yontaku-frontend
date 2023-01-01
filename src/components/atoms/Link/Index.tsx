@@ -1,4 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import { Link } from 'react-router-dom'
+import { styles } from '../../../styles/style'
 
 interface Props {
   linkTo: string
@@ -6,5 +8,9 @@ interface Props {
 }
 
 export const HeaderLink: React.FC<Props> = (props: Props) => {
-  return <Link to={props.linkTo}>{props.linkText}</Link>
+  return (
+    <Link to={props.linkTo} css={styles.headerLink}>
+      {props.linkText}
+    </Link>
+  )
 }

@@ -3,13 +3,14 @@ import MenuIcon from '@mui/icons-material/Menu'
 import { Button } from '@mui/material'
 import { styles } from '../../../styles/style'
 
-interface Props {
+interface ContainedButtonProps {
   buttonText: string
+  handleFunction: () => {}
 }
 
-export const ContainedButton: React.FC<Props> = (props: Props) => {
+export const ContainedButton: React.FC<ContainedButtonProps> = (props: ContainedButtonProps) => {
   return (
-    <Button variant="contained" css={styles.containedButton}>
+    <Button variant="contained" css={styles.containedButton} onClick={props.handleFunction}>
       {props.buttonText}
     </Button>
   )

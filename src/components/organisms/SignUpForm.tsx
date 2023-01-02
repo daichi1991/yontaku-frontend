@@ -12,6 +12,7 @@ interface Props {
   password: TextField
   signinLinkTo: string
   signinLinkText: string
+  handleFunction: () => {}
 }
 
 export const SignUpForm: React.FC<Props> = (props: Props) => {
@@ -20,7 +21,7 @@ export const SignUpForm: React.FC<Props> = (props: Props) => {
       <Box css={styles.commonForm}>
         <Box css={styles.formBoader}>
           <MailAuthenticate mailAddress={props.mailAddress} password={props.password} />
-          <ContainedButton buttonText={props.buttonText} />
+          <ContainedButton buttonText={props.buttonText} handleFunction={props.handleFunction} />
           <Divider css={styles.divider} />
           <Box css={styles.textAlignCenter}>
             <PrimaryLink linkTo={props.signinLinkTo} linkText={props.signinLinkText} />

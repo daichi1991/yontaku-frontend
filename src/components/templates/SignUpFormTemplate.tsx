@@ -1,9 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import { TextField } from '../../types'
 import { PageTitle } from '../atoms/Title/Index'
 import { Header } from '../organisms/Header'
 import { SignUpForm } from '../organisms/SignUpForm'
 
 export const SignUpFormTemplate: React.FC = () => {
+  const navigate = useNavigate()
+
   const mailAddress: TextField = {
     labelText: 'メールアドレス',
     placeholder: 'example@example.com',
@@ -16,6 +19,11 @@ export const SignUpFormTemplate: React.FC = () => {
     inputType: 'password'
   }
 
+  const handleSignUp: any = () => {
+    console.log('signUn')
+    navigate('/')
+  }
+
   return (
     <>
       <Header menuIcon={false} accountIcon={false} />
@@ -26,6 +34,7 @@ export const SignUpFormTemplate: React.FC = () => {
         password={password}
         signinLinkTo="/signin"
         signinLinkText="ログインはこちら"
+        handleFunction={handleSignUp}
       />
     </>
   )

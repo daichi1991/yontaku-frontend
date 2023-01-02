@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { TextField } from '../../types'
+import { TextFieldProps } from '../../types'
 import { PageTitle } from '../atoms/Title/Index'
 import { Header } from '../organisms/Header'
 import { SignUpForm } from '../organisms/SignUpForm'
@@ -7,13 +7,13 @@ import { SignUpForm } from '../organisms/SignUpForm'
 export const SignUpFormTemplate: React.FC = () => {
   const navigate = useNavigate()
 
-  const mailAddress: TextField = {
+  const mailAddress: TextFieldProps = {
     labelText: 'メールアドレス',
     placeholder: 'example@example.com',
     inputType: 'text'
   }
 
-  const password: TextField = {
+  const password: TextFieldProps = {
     labelText: 'パスワード',
     placeholder: undefined,
     inputType: 'password'

@@ -16,6 +16,7 @@ import { MainTitle } from '../atoms/Title/Index'
 interface Props extends HeaderType {}
 
 export const Header: React.FC<Props> = (props: Props) => {
+  const { menuIcon, accountIcon } = props
   const [auth, setAuth] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
@@ -41,13 +42,13 @@ export const Header: React.FC<Props> = (props: Props) => {
       </FormGroup>
       <AppBar position="static" color="primary">
         <Toolbar>
-          {props.menuIcon === true && (
+          {menuIcon === true && (
             <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
               <MenuButton />
             </IconButton>
           )}
           <MainTitle />
-          {props.accountIcon === true &&
+          {accountIcon === true &&
             (auth ? (
               <div>
                 <IconButton

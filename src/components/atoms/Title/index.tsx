@@ -17,9 +17,10 @@ interface PageTitleProps {
 }
 
 export const PageTitle: React.FC<PageTitleProps> = (props: PageTitleProps) => {
+  const { pageTitleText } = props
   return (
     <Typography variant="h6" component="div" css={styles.pageTitle}>
-      {props.pageTitleText}
+      {pageTitleText}
     </Typography>
   )
 }

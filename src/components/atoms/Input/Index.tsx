@@ -7,12 +7,13 @@ interface Props {
 }
 
 export const TextInput: React.FC<Props> = (props: Props) => {
+  const { placeholder, inputType } = props
   return (
     <TextField
       id="outlined-basic"
-      placeholder={props.placeholder}
+      placeholder={placeholder}
       variant="outlined"
-      type={props.inputType}
+      type={inputType}
       size="small"
       css={styles.textField}
     />

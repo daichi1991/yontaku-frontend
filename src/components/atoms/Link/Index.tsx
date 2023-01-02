@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { SerializedStyles } from '@mui/styled-engine'
 import { Link } from 'react-router-dom'
 import { styles } from '../../../styles/style'
 
@@ -9,9 +8,10 @@ interface HeaderLinkProps {
 }
 
 export const HeaderLink: React.FC<HeaderLinkProps> = (props: HeaderLinkProps) => {
+  const { linkTo, linkText } = props
   return (
-    <Link to={props.linkTo} css={styles.headerLink}>
-      {props.linkText}
+    <Link to={linkTo} css={styles.headerLink}>
+      {linkText}
     </Link>
   )
 }
@@ -19,13 +19,13 @@ export const HeaderLink: React.FC<HeaderLinkProps> = (props: HeaderLinkProps) =>
 interface PrimaryLinkProps {
   linkTo: string
   linkText: String
-  additionalCss?: SerializedStyles
 }
 
 export const PrimaryLink: React.FC<PrimaryLinkProps> = (props: PrimaryLinkProps) => {
+  const { linkTo, linkText } = props
   return (
-    <Link to={props.linkTo} css={styles.primaryLink}>
-      {props.linkText}
+    <Link to={linkTo} css={styles.primaryLink}>
+      {linkText}
     </Link>
   )
 }

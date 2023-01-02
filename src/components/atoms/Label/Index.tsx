@@ -5,5 +5,6 @@ interface Props {
 }
 
 export const InputFormLabel: React.FC<Props> = (props: Props) => {
-  return <FormLabel sx={{ fontWeight: 'bold' }}>{props.labelText}</FormLabel>
+  const { labelText } = props
+  return <FormLabel sx={{ fontWeight: 'bold' }}>{labelText}</FormLabel>
 }

@@ -1,30 +1,27 @@
 import Divider from '@mui/material/Divider'
 import { Box } from '@mui/system'
 import { styles } from '../../styles/style'
-import { TextField } from '../../types'
+import { MailAuthenticateProps } from '../../types'
 import { ContainedButton } from '../atoms/Button/Index'
 import { PrimaryLink } from '../atoms/Link/Index'
 import { MailAuthenticate } from './MailAuthenticate'
 
-interface Props {
-  buttonText: string
-  mailAddress: TextField
-  password: TextField
+interface Props extends MailAuthenticateProps {
   signinLinkTo: string
   signinLinkText: string
-  handleFunction: () => {}
 }
 
 export const SignUpForm: React.FC<Props> = (props: Props) => {
+  const { buttonText, mailAddress, password, handleFunction, signinLinkTo, signinLinkText } = props
   return (
     <Box css={styles.signInForm}>
       <Box css={styles.commonForm}>
         <Box css={styles.formBoader}>
-          <MailAuthenticate mailAddress={props.mailAddress} password={props.password} />
-          <ContainedButton buttonText={props.buttonText} handleFunction={props.handleFunction} />
+          <MailAuthenticate mailAddress={mailAddress} password={password} />
+          <ContainedButton buttonText={buttonText} handleFunction={handleFunction} />
           <Divider css={styles.divider} />
           <Box css={styles.textAlignCenter}>
-            <PrimaryLink linkTo={props.signinLinkTo} linkText={props.signinLinkText} />
+            <PrimaryLink linkTo={signinLinkTo} linkText={signinLinkText} />
           </Box>
         </Box>
       </Box>

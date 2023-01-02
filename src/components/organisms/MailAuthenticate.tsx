@@ -1,24 +1,25 @@
-import { TextField } from '../../types'
+import { TextFieldProps } from '../../types'
 import { CommonTextField } from '../molecules/TextInput'
 
 interface Props {
-  mailAddress: TextField
-  password: TextField
+  mailAddress: TextFieldProps
+  password: TextFieldProps
 }
 
 export const MailAuthenticate: React.FC<Props> = (props: Props) => {
+  const { mailAddress, password } = props
   return (
     <>
       <CommonTextField
-        labelText={props.mailAddress.labelText}
-        placeholder={props.mailAddress.placeholder}
-        inputType={props.mailAddress.inputType}
+        labelText={mailAddress.labelText}
+        placeholder={mailAddress.placeholder}
+        inputType={mailAddress.inputType}
       />
       <br />
       <CommonTextField
-        labelText={props.password.labelText}
-        placeholder={props.password.placeholder}
-        inputType={props.password.inputType}
+        labelText={password.labelText}
+        placeholder={password.placeholder}
+        inputType={password.inputType}
       />
       <br />
     </>

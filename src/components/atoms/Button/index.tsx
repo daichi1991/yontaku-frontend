@@ -9,9 +9,10 @@ interface ContainedButtonProps {
 }
 
 export const ContainedButton: React.FC<ContainedButtonProps> = (props: ContainedButtonProps) => {
+  const { buttonText, handleFunction } = props
   return (
-    <Button variant="contained" css={styles.containedButton} onClick={props.handleFunction}>
-      {props.buttonText}
+    <Button variant="contained" css={styles.containedButton} onClick={handleFunction}>
+      {buttonText}
     </Button>
   )
 }

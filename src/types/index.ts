@@ -3,3 +3,8 @@ export interface TextField {
   placeholder: string | undefined
   inputType: string
 }
+
+export interface HeaderType {
+  menuIcon: boolean
+  accountIcon: boolean
+}

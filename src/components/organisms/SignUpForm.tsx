@@ -10,11 +10,11 @@ interface Props {
   buttonText: string
   mailAddress: TextField
   password: TextField
-  signupLinkTo: string
-  signupLinkText: string
+  signinLinkTo: string
+  signinLinkText: string
 }
 
-export const SignInForm: React.FC<Props> = (props: Props) => {
+export const SignUpForm: React.FC<Props> = (props: Props) => {
   return (
     <Box css={styles.signInForm}>
       <Box css={styles.commonForm}>
@@ -23,7 +23,7 @@ export const SignInForm: React.FC<Props> = (props: Props) => {
           <ContainedButton buttonText={props.buttonText} />
           <Divider css={styles.divider} />
           <Box css={styles.textAlignCenter}>
-            <PrimaryLink linkTo={props.signupLinkTo} linkText={props.signupLinkText} />
+            <PrimaryLink linkTo={props.signinLinkTo} linkText={props.signinLinkText} />
           </Box>
         </Box>
       </Box>

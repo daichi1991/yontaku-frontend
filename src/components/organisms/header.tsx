@@ -8,11 +8,14 @@ import MenuItem from '@mui/material/MenuItem'
 import Switch from '@mui/material/Switch'
 import Toolbar from '@mui/material/Toolbar'
 import * as React from 'react'
+import { HeaderType } from '../../types'
 import { AccountButton, MenuButton } from '../atoms/Button/Index'
 import { HeaderLink } from '../atoms/Link/Index'
-import { Title } from '../atoms/Title/Index'
+import { MainTitle } from '../atoms/Title/Index'
 
-export const Header: React.FC = () => {
+interface Props extends HeaderType {}
+
+export const Header: React.FC<Props> = (props: Props) => {
   const [auth, setAuth] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
@@ -38,46 +41,49 @@ export const Header: React.FC = () => {
       </FormGroup>
       <AppBar position="static" color="primary">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuButton />
-          </IconButton>
-          <Title />
-          {auth ? (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountButton />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right'
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right'
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          ) : (
-            <div>
-              <HeaderLink linkTo="/signin" linkText="ログイン" />
-            </div>
+          {props.menuIcon === true && (
+            <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+              <MenuButton />
+            </IconButton>
           )}
+          <MainTitle />
+          {props.accountIcon === true &&
+            (auth ? (
+              <div>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountButton />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                </Menu>
+              </div>
+            ) : (
+              <div>
+                <HeaderLink linkTo="/signin" linkText="ログイン" />
+              </div>
+            ))}
         </Toolbar>
       </AppBar>
     </Box>

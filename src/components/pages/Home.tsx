@@ -1,5 +1,5 @@
-import { MainTemplate } from '../templates/MainTemplate'
+import { HomeTemplate } from '../templates/HomeTemplate'
 
 export const Home: React.FC = () => {
-  return <MainTemplate />
+  return <HomeTemplate />
 }

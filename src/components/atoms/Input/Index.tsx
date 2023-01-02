@@ -1,4 +1,5 @@
 import TextField from '@mui/material/TextField'
+import { styles } from '../../../styles/style'
 
 interface Props {
   placeholder: string | undefined
@@ -12,7 +13,8 @@ export const TextInput: React.FC<Props> = (props: Props) => {
       placeholder={props.placeholder}
       variant="outlined"
       type={props.inputType}
-      sx={{ mt: 1, mb: 3 }}
+      size="small"
+      css={styles.textField}
     />
   )
 }

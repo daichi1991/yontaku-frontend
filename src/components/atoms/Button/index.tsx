@@ -5,7 +5,7 @@ import { styles } from '../../../styles/style'
 
 interface ContainedButtonProps {
   buttonText: string
-  handleFunction: () => {}
+  handleFunction: () => void
 }
 
 export const ContainedButton: React.FC<ContainedButtonProps> = (props: ContainedButtonProps) => {

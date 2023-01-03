@@ -15,7 +15,7 @@ rules:
   {
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'off',
-    '@typescript-eslint/strict-boolean-expressions': 'on',
+    '@typescript-eslint/strict-boolean-expressions': 'error',
     'import/prefer-default-export': 'off',
     'import/extensions': ['error', { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' }],
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],

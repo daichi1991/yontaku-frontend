@@ -1,4 +1,4 @@
-import { DialogActionsProps, DialogContentProps } from '@mui/material'
+import { ReactElement } from 'react'
 
 export interface TextFieldProps {
   labelText?: string
@@ -15,8 +15,8 @@ export interface DialogProps {
   open: boolean
   onClose: () => void
   dialogTitle: string | null
-  dialogContent: DialogContentProps | null
-  dialogAction: DialogActionsProps | null
+  dialogContent?: ReactElement
+  dialogAction?: ReactElement
 }
 
 export interface MailAuthenticateProps {

@@ -9,15 +9,11 @@ interface Props extends DialogProps {}
 export const CommonDialog: React.FC<Props> = (props: Props) => {
   const { open, onClose, dialogTitle, dialogContent, dialogAction } = props
 
-  const handleClose = () => {
-    onClose()
-  }
-
   return (
-    <Dialog onClose={handleClose} open={open}>
+    <Dialog onClose={onClose} open={open}>
       {dialogTitle != null && <DialogTitle>{dialogTitle}</DialogTitle>}
-      {dialogContent != null && <DialogContent>{dialogContent.children}</DialogContent>}
-      {dialogAction != null && <DialogActions>{dialogAction.children}</DialogActions>}
+      {dialogContent != null && <DialogContent>{dialogContent}</DialogContent>}
+      {dialogAction != null && <DialogActions>{dialogAction}</DialogActions>}
     </Dialog>
   )
 }

@@ -21,7 +21,7 @@ export const SignUpFormTemplate: React.FC = () => {
 
   const handleSignUp: any = () => {
     console.log('signUn')
-    navigate('/')
+    navigate('/', { state: { dialog: 'yes' } })
   }
 
   return (

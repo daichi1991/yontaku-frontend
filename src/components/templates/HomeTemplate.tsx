@@ -1,13 +1,11 @@
 import { useState } from 'react'
-import { ContainedButton } from '../atoms/Button/Index'
+import { useLocation } from 'react-router-dom'
 import { Header } from '../organisms/Header'
 import { WelcomDialog } from '../organisms/WelcomeDialog'
 
 export const HomeTemplate: React.FC = () => {
-  const [open, setOpen] = useState(false)
-  const handleDialogOpen = (): void => {
-    setOpen(true)
-  }
+  const location = useLocation()
+  const [open, setOpen] = useState(location.state != null && location.state.dialog === 'yes')
 
   const handleClose = (): void => {
     setOpen(false)
@@ -15,7 +13,6 @@ export const HomeTemplate: React.FC = () => {
   return (
     <>
       <Header menuIcon={true} accountIcon={true} />
-      <ContainedButton buttonText="ダイアログ" handleFunction={handleDialogOpen} />
       <WelcomDialog open={open} onClose={handleClose} />
     </>
   )

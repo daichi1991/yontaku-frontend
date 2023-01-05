@@ -12,12 +12,12 @@ interface Props extends MailAuthenticateProps {
 }
 
 export const SignUpForm: React.FC<Props> = (props: Props) => {
-  const { buttonText, mailAddress, password, handleFunction, signinLinkTo, signinLinkText } = props
+  const { buttonText, email, password, handleFunction, signinLinkTo, signinLinkText } = props
   return (
     <Box css={styles.signInForm}>
       <Box css={styles.commonForm}>
         <Box css={styles.formBoader}>
-          <MailAuthenticate mailAddress={mailAddress} password={password} />
+          <MailAuthenticate mailAddress={email} password={password} />
           <ContainedButton buttonText={buttonText} handleFunction={handleFunction} />
           <Divider css={styles.divider} />
           <Box css={styles.textAlignCenter}>

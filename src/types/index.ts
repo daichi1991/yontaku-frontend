@@ -4,6 +4,9 @@ export interface TextFieldProps {
   labelText?: string
   placeholder: string | undefined
   inputType: string
+  inputName: string
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  inputValue: string
 }
 
 export interface HeaderType {
@@ -21,7 +24,7 @@ export interface DialogProps {
 
 export interface MailAuthenticateProps {
   buttonText: string
-  mailAddress: TextFieldProps
+  email: TextFieldProps
   password: TextFieldProps
   handleFunction: () => {}
 }

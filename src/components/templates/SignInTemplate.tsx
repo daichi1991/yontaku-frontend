@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TextFieldProps } from '../../types'
 import { PageTitle } from '../atoms/Title/Index'
@@ -5,18 +6,34 @@ import { Header } from '../organisms/Header'
 import { SignInForm } from '../organisms/SignInForm'
 
 export const SignInTemplate: React.FC = () => {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
   const navigate = useNavigate()
 
-  const mailAddress: TextFieldProps = {
-    labelText: 'メールアドレス',
-    placeholder: 'example@example.com',
-    inputType: 'text'
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setEmail(event.target.value)
   }
 
-  const password: TextFieldProps = {
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setPassword(event.target.value)
+  }
+
+  const emailProps: TextFieldProps = {
+    labelText: 'メールアドレス',
+    placeholder: 'example@example.com',
+    inputType: 'text',
+    inputName: 'email',
+    handleChange: handleChangeEmail,
+    inputValue: email
+  }
+
+  const passwordProps: TextFieldProps = {
     labelText: 'パスワード',
     placeholder: undefined,
-    inputType: 'password'
+    inputType: 'password',
+    inputName: 'password',
+    handleChange: handleChangePassword,
+    inputValue: password
   }
 
   const handleSignIn: any = () => {
@@ -30,8 +47,8 @@ export const SignInTemplate: React.FC = () => {
       <PageTitle pageTitleText="ログイン" />
       <SignInForm
         buttonText="ログイン"
-        mailAddress={mailAddress}
-        password={password}
+        email={emailProps}
+        password={passwordProps}
         signupLinkTo="/signup/form"
         signupLinkText="会員登録はこちら"
         handleFunction={handleSignIn}

@@ -14,12 +14,18 @@ export const MailAuthenticate: React.FC<Props> = (props: Props) => {
         labelText={mailAddress.labelText}
         placeholder={mailAddress.placeholder}
         inputType={mailAddress.inputType}
+        inputName={mailAddress.inputName}
+        handleChange={mailAddress.handleChange}
+        inputValue={mailAddress.inputValue}
       />
       <br />
       <CommonTextField
         labelText={password.labelText}
         placeholder={password.placeholder}
         inputType={password.inputType}
+        inputName={password.inputName}
+        handleChange={password.handleChange}
+        inputValue={password.inputValue}
       />
       <br />
     </>

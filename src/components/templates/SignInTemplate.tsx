@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthUserContext } from '../../contexts/authUserContext'
+import { auth } from '../../firebase'
 import { TextFieldProps } from '../../types'
 import { PageTitle } from '../atoms/Title/Index'
 import { Header } from '../organisms/Header'
@@ -8,6 +11,7 @@ import { SignInForm } from '../organisms/SignInForm'
 export const SignInTemplate: React.FC = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { setIsAuthenticated } = useContext(AuthUserContext)
   const navigate = useNavigate()
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -36,9 +40,18 @@ export const SignInTemplate: React.FC = () => {
     inputValue: password
   }
 
-  const handleSignIn: any = () => {
+  const handleSignIn = (): void => {
     console.log('signIn')
-    navigate('/')
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential)
+        setIsAuthenticated(true)
+        navigate('/')
+      })
+      .catch((error) => {
+        console.error(error)
+        setIsAuthenticated(false)
+      })
   }
 
   return (

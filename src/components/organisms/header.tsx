@@ -1,13 +1,11 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormGroup from '@mui/material/FormGroup'
 import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import Switch from '@mui/material/Switch'
 import Toolbar from '@mui/material/Toolbar'
-import * as React from 'react'
+import { useContext, useState } from 'react'
+import { AuthUserContext } from '../../contexts/authUserContext'
 import { HeaderType } from '../../types'
 import { AccountButton, MenuButton } from '../atoms/Button/Index'
 import { HeaderLink } from '../atoms/Link/Index'
@@ -17,12 +15,8 @@ interface Props extends HeaderType {}
 
 export const Header: React.FC<Props> = (props: Props) => {
   const { menuIcon, accountIcon } = props
-  const [auth, setAuth] = React.useState(true)
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setAuth(event.target.checked)
-  }
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthUserContext)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget)
@@ -32,14 +26,13 @@ export const Header: React.FC<Props> = (props: Props) => {
     setAnchorEl(null)
   }
 
+  const handleSignOut = (): void => {
+    setIsAuthenticated(false)
+    setAnchorEl(null)
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
       <AppBar position="static" color="primary">
         <Toolbar>
           {menuIcon === true && (
@@ -49,7 +42,7 @@ export const Header: React.FC<Props> = (props: Props) => {
           )}
           <MainTitle />
           {accountIcon === true &&
-            (auth ? (
+            (isAuthenticated ? (
               <div>
                 <IconButton
                   size="large"
@@ -64,20 +57,11 @@ export const Header: React.FC<Props> = (props: Props) => {
                 <Menu
                   id="menu-appbar"
                   anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
                   keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
                 </Menu>
               </div>
             ) : (

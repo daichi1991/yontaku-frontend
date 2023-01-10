@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthUserContext } from '../../contexts/authUserContext'
 import { auth } from '../../firebase'
 import { TextFieldProps } from '../../types'
 import { PageTitle } from '../atoms/Title/Index'
@@ -10,6 +11,7 @@ import { SignUpForm } from '../organisms/SignUpForm'
 export const SignUpFormTemplate: React.FC = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { setIsAuthenticated } = useContext(AuthUserContext)
   const navigate = useNavigate()
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -38,16 +40,14 @@ export const SignUpFormTemplate: React.FC = () => {
     inputValue: password
   }
 
-  const handleSignUp: any = () => {
-    console.log(email)
-    console.log(password)
+  const handleSignUp = (): void => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential)
-        navigate('/', { state: { dialog: 'yes' } })
+      .then((res) => {
+        setIsAuthenticated(true)
+        navigate('/')
       })
       .catch((error) => {
-        alert(error.message)
+        setIsAuthenticated(false)
         console.error(error)
       })
   }

@@ -26,5 +26,14 @@ export interface MailAuthenticateProps {
   buttonText: string
   email: TextFieldProps
   password: TextFieldProps
-  handleFunction: () => {}
+  handleFunction: () => void
+}
+
+export interface AuthUser {
+  token: string
+}
+
+export interface UserType {
+  id: string
+  username: string
 }

@@ -44,7 +44,6 @@ export const SignInTemplate: React.FC = () => {
     console.log('signIn')
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential)
         setIsAuthenticated(true)
         navigate('/')
       })

@@ -1,15 +1,21 @@
+import { css } from '@emotion/react'
 import TextField from '@mui/material/TextField'
-import { styles } from '../../../styles/style'
 
-interface Props {
+const textField = css({
+  width: '100%',
+  marginTop: '5px',
+  marginBottom: '20px'
+})
+
+export interface TextInputProps {
   placeholder: string | undefined
   inputType: string
   inputName: string
-  handleChange: (eevent: React.ChangeEvent<HTMLInputElement>) => void
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   inputValue: string
 }
 
-export const TextInput: React.FC<Props> = (props: Props) => {
+export const TextInput: React.FC<TextInputProps> = (props: TextInputProps) => {
   const { placeholder, inputType, inputName, handleChange, inputValue } = props
   return (
     <TextField
@@ -17,7 +23,7 @@ export const TextInput: React.FC<Props> = (props: Props) => {
       variant="outlined"
       type={inputType}
       size="small"
-      css={styles.textField}
+      css={textField}
       name={inputName}
       onChange={handleChange}
       value={inputValue}

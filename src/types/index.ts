@@ -23,6 +23,7 @@ export interface DialogProps {
 }
 
 export interface MailAuthenticateProps {
+  variant: string
   buttonText: string
   email: TextFieldProps
   password: TextFieldProps

@@ -1,3 +1,5 @@
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import MenuIcon from '@mui/icons-material/Menu'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
@@ -7,7 +9,6 @@ import Toolbar from '@mui/material/Toolbar'
 import { useContext, useState } from 'react'
 import { AuthUserContext } from '../../contexts/authUserContext'
 import { HeaderType } from '../../types'
-import { AccountButton, MenuButton } from '../atoms/Button/Index'
 import { HeaderLink } from '../atoms/Link/Index'
 import { MainTitle } from '../atoms/Title/Index'
 
@@ -37,7 +38,7 @@ export const Header: React.FC<Props> = (props: Props) => {
         <Toolbar>
           {menuIcon === true && (
             <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-              <MenuButton />
+              <MenuIcon />
             </IconButton>
           )}
           <MainTitle />
@@ -52,7 +53,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                   onClick={handleMenu}
                   color="inherit"
                 >
-                  <AccountButton />
+                  <AccountCircleIcon />
                 </IconButton>
                 <Menu
                   id="menu-appbar"

@@ -58,6 +58,7 @@ export const SignInTemplate: React.FC = () => {
       <Header menuIcon={false} accountIcon={false} />
       <PageTitle pageTitleText="ログイン" />
       <SignInForm
+        variant="contained"
         buttonText="ログイン"
         email={emailProps}
         password={passwordProps}

@@ -33,15 +33,6 @@ export const styles = {
     justifyContent: 'center',
     padding: '0px 10px'
   }),
-  textField: css({
-    width: '100%',
-    marginTop: '5px',
-    marginBottom: '20px'
-  }),
-  containedButton: css({
-    width: '100%',
-    marginTop: '20px'
-  }),
   divider: css({
     marginTop: '40px',
     marginBottom: '20px',

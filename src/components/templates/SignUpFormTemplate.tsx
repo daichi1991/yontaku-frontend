@@ -57,6 +57,7 @@ export const SignUpFormTemplate: React.FC = () => {
       <Header menuIcon={false} accountIcon={false} />
       <PageTitle pageTitleText="会員登録" />
       <SignUpForm
+        variant="contained"
         buttonText="同意して登録"
         email={emailProps}
         password={passwordProps}

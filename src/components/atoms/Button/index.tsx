@@ -1,26 +1,22 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import MenuIcon from '@mui/icons-material/Menu'
+import { css } from '@emotion/react'
 import { Button } from '@mui/material'
-import { styles } from '../../../styles/style'
 
-interface ContainedButtonProps {
+const containedButton = css({
+  width: '100%',
+  marginTop: '20px'
+})
+
+export interface CommonButtonProps {
+  variant: string
   buttonText: string
   handleFunction: () => void
 }
 
-export const ContainedButton: React.FC<ContainedButtonProps> = (props: ContainedButtonProps) => {
+export const CommonButton: React.FC<CommonButtonProps> = (props: CommonButtonProps) => {
   const { buttonText, handleFunction } = props
   return (
-    <Button variant="contained" css={styles.containedButton} onClick={handleFunction}>
+    <Button variant="contained" css={containedButton} onClick={handleFunction}>
       {buttonText}
     </Button>
   )
-}
-
-export const AccountButton: React.FC = () => {
-  return <AccountCircleIcon />
-}
-
-export const MenuButton: React.FC = () => {
-  return <MenuIcon />
 }

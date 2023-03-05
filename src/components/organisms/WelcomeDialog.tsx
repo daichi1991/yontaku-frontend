@@ -1,4 +1,4 @@
-import { CommonDialog } from '../atoms/Dialog'
+import { CommonDialog } from '../atoms/Dialog/Index'
 
 interface Props {
   open: boolean

@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import { styles } from '../../styles/style'
 import { MailAuthenticateProps } from '../../types'
 import { CommonButton } from '../atoms/Button/Index'
-import { PrimaryLink } from '../atoms/Link/Index'
+import { CommonLink } from '../atoms/Link/Index'
 import { MailAuthenticate } from './MailAuthenticate'
 
 interface Props extends MailAuthenticateProps {
@@ -22,7 +22,9 @@ export const SignUpForm: React.FC<Props> = (props: Props) => {
           <CommonButton variant={variant} buttonText={buttonText} handleFunction={handleFunction} />
           <Divider css={styles.divider} />
           <Box css={styles.textAlignCenter}>
-            <PrimaryLink linkTo={signinLinkTo} linkText={signinLinkText} />
+            <div>
+              <CommonLink linkTo={signinLinkTo} linkText={signinLinkText} />
+            </div>
           </Box>
         </Box>
       </Box>

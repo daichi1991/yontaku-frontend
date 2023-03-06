@@ -1,5 +1,7 @@
+import { css } from '@emotion/react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import MenuIcon from '@mui/icons-material/Menu'
+import { Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
@@ -7,10 +9,10 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AuthUserContext } from '../../contexts/authUserContext'
 import { HeaderType } from '../../types'
-import { HeaderLink } from '../atoms/Link/Index'
-import { MainTitle } from '../atoms/Title/Index'
+import { CommonLink } from '../atoms/Link/Index'
 
 interface Props extends HeaderType {}
 
@@ -18,6 +20,11 @@ export const Header: React.FC<Props> = (props: Props) => {
   const { menuIcon, accountIcon } = props
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthUserContext)
+
+  const headerLinkStyle = css({
+    color: '#fff',
+    textDecoration: 'none'
+  })
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget)
@@ -41,7 +48,11 @@ export const Header: React.FC<Props> = (props: Props) => {
               <MenuIcon />
             </IconButton>
           )}
-          <MainTitle />
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link to="/" css={headerLinkStyle}>
+              ヨンタク！
+            </Link>
+          </Typography>
           {accountIcon === true &&
             (isAuthenticated ? (
               <div>
@@ -67,7 +78,7 @@ export const Header: React.FC<Props> = (props: Props) => {
               </div>
             ) : (
               <div>
-                <HeaderLink linkTo="/signin" linkText="ログイン" />
+                <CommonLink linkTo="/signin" linkText="ログイン" linkCss={headerLinkStyle} />
               </div>
             ))}
         </Toolbar>

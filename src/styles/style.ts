@@ -2,17 +2,10 @@
 import { css } from '@emotion/react'
 
 export const styles = {
-  headerLink: css({
-    textDecoration: 'none',
-    color: '#fff'
-  }),
   pageTitle: css({
     marginTop: '20px',
     marginBottom: '20px',
     textAlign: 'center'
-  }),
-  primaryLink: css({
-    color: '#009688'
   }),
   textAlignCenter: css({
     textAlign: 'center'

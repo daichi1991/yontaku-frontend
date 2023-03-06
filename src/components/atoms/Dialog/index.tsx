@@ -4,9 +4,9 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import { DialogProps } from '../../../types'
 
-export interface CommonDialogProps extends DialogProps {}
+export interface Props extends DialogProps {}
 
-export const CommonDialog: React.FC<CommonDialogProps> = (props: CommonDialogProps) => {
+export const CommonDialog: React.FC<Props> = (props: Props) => {
   const { open, onClose, dialogTitle, dialogContent, dialogAction } = props
 
   return (

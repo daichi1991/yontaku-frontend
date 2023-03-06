@@ -1,6 +1,6 @@
 import FormLabel from '@mui/material/FormLabel'
 
-interface Props {
+export interface Props {
   labelText: string
 }
 

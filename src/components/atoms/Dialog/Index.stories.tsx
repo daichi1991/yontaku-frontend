@@ -1,12 +1,12 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { CommonDialog, CommonDialogProps } from './Index'
+import { CommonDialog, Props } from './Index'
 
-const StoryBook: Meta<CommonDialogProps> = {
+const StoryBook: Meta<Props> = {
   title: 'CommonDialog',
   component: CommonDialog
 }
 
-const Template: Story<CommonDialogProps> = (args) => <CommonDialog {...args} />
+const Template: Story<Props> = (args) => <CommonDialog {...args} />
 
 export const Index = Template.bind({})
 

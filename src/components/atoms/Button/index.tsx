@@ -6,13 +6,13 @@ const containedButton = css({
   marginTop: '20px'
 })
 
-export interface CommonButtonProps {
+export interface Props {
   variant: string
   buttonText: string
   handleFunction: () => void
 }
 
-export const CommonButton: React.FC<CommonButtonProps> = (props: CommonButtonProps) => {
+export const CommonButton: React.FC<Props> = (props: Props) => {
   const { buttonText, handleFunction } = props
   return (
     <Button variant="contained" css={containedButton} onClick={handleFunction}>

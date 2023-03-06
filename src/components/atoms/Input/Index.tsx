@@ -7,7 +7,7 @@ const textField = css({
   marginBottom: '20px'
 })
 
-export interface TextInputProps {
+export interface Props {
   placeholder: string | undefined
   inputType: string
   inputName: string
@@ -15,7 +15,7 @@ export interface TextInputProps {
   inputValue: string
 }
 
-export const TextInput: React.FC<TextInputProps> = (props: TextInputProps) => {
+export const TextInput: React.FC<Props> = (props: Props) => {
   const { placeholder, inputType, inputName, handleChange, inputValue } = props
   return (
     <TextField

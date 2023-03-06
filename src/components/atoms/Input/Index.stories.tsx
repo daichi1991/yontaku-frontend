@@ -1,12 +1,12 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { TextInput, TextInputProps } from './Index'
+import { Props, TextInput } from './Index'
 
-const StoryBook: Meta<TextInputProps> = {
+const StoryBook: Meta<Props> = {
   title: 'TextInput',
   component: TextInput
 }
 
-const Template: Story<TextInputProps> = (args) => <TextInput {...args} />
+const Template: Story<Props> = (args) => <TextInput {...args} />
 
 export const Index = Template.bind({})
 

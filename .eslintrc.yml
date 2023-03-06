@@ -23,5 +23,6 @@ rules:
     'no-void': ['error', { allowAsStatement: true }],
     'semi': 'off',
     'comma-dangle': ['error', 'never'],
-    'multiline-ternary': ['error', 'never']
+    'multiline-ternary': ['error', 'never'],
+    'react/no-unknown-property': ['error', { 'ignore': ['css'] }]
   }

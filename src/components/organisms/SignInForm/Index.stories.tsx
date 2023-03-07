@@ -1,17 +1,9 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { MemoryRouter } from 'react-router-dom'
 import { Props, SignInForm } from './Index'
 
 const StoryBook: Meta<Props> = {
   title: 'Organisms/SignInForm',
-  component: SignInForm,
-  decorators: [
-    (Story) => (
-      <MemoryRouter>
-        <Story />
-      </MemoryRouter>
-    )
-  ]
+  component: SignInForm
 }
 
 const Template: Story<Props> = (args) => <SignInForm {...args} />

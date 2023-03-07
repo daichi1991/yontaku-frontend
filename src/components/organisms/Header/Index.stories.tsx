@@ -1,17 +1,9 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { MemoryRouter } from 'react-router-dom'
 import { Header, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
   title: 'Organisms/Header',
-  component: Header,
-  decorators: [
-    (Story) => (
-      <MemoryRouter>
-        <Story />
-      </MemoryRouter>
-    )
-  ]
+  component: Header
 }
 
 const Template: Story<Props> = (args) => <Header {...args} />

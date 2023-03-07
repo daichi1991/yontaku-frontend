@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { Header } from '../organisms/Header'
-import { WelcomDialog } from '../organisms/WelcomeDialog'
+import { Header } from '../../organisms/Header/Index'
+import { WelcomDialog } from '../../organisms/WelcomeDialog/Index'
 
 export const HomeTemplate: React.FC = () => {
   const location = useLocation()

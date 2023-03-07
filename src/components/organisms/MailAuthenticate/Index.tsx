@@ -1,7 +1,7 @@
-import { TextFieldProps } from '../../types'
-import { CommonTextField } from '../molecules/TextField/Index'
+import { TextFieldProps } from '../../../types'
+import { CommonTextField } from '../../molecules/TextField/Index'
 
-interface Props {
+export interface Props {
   mailAddress: TextFieldProps
   password: TextFieldProps
 }

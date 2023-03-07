@@ -1,12 +1,12 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AuthUserContext } from '../../contexts/authUserContext'
-import { auth } from '../../firebase'
-import { TextFieldProps } from '../../types'
-import { PageTitle } from '../atoms/Title/Index'
-import { Header } from '../organisms/Header'
-import { SignInForm } from '../organisms/SignInForm'
+import { AuthUserContext } from '../../../contexts/authUserContext'
+import { auth } from '../../../firebase'
+import { TextFieldProps } from '../../../types'
+import { CommonTitle } from '../../atoms/Title/Index'
+import { Header } from '../../organisms/Header/Index'
+import { SignInForm } from '../../organisms/SignInForm/Index'
 
 export const SignInTemplate: React.FC = () => {
   const [email, setEmail] = useState<string>('')
@@ -56,7 +56,7 @@ export const SignInTemplate: React.FC = () => {
   return (
     <>
       <Header menuIcon={false} accountIcon={false} />
-      <PageTitle pageTitleText="ログイン" />
+      <CommonTitle titleText="ログイン" />
       <SignInForm
         variant="contained"
         buttonText="ログイン"

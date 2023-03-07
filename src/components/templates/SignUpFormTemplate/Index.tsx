@@ -1,12 +1,12 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AuthUserContext } from '../../contexts/authUserContext'
-import { auth } from '../../firebase'
-import { TextFieldProps } from '../../types'
-import { CommonTitle } from '../atoms/Title/Index'
-import { Header } from '../organisms/Header'
-import { SignUpForm } from '../organisms/SignUpForm'
+import { AuthUserContext } from '../../../contexts/authUserContext'
+import { auth } from '../../../firebase'
+import { TextFieldProps } from '../../../types'
+import { CommonTitle } from '../../atoms/Title/Index'
+import { Header } from '../../organisms/Header/Index'
+import { SignUpForm } from '../../organisms/SignUpForm/Index'
 
 export const SignUpFormTemplate: React.FC = () => {
   const [email, setEmail] = useState<string>('')

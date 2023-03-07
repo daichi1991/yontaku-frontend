@@ -9,12 +9,11 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { AuthUserContext } from '../../contexts/authUserContext'
-import { HeaderType } from '../../types'
-import { CommonLink } from '../atoms/Link/Index'
+import { AuthUserContext } from '../../../contexts/authUserContext'
+import { HeaderType } from '../../../types'
+import { CommonLink } from '../../atoms/Link/Index'
 
-interface Props extends HeaderType {}
+export interface Props extends HeaderType {}
 
 export const Header: React.FC<Props> = (props: Props) => {
   const { menuIcon, accountIcon } = props
@@ -49,9 +48,7 @@ export const Header: React.FC<Props> = (props: Props) => {
             </IconButton>
           )}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/" css={headerLinkStyle}>
-              ヨンタク！
-            </Link>
+            <CommonLink linkTo="/" linkText="ヨンタク！" linkCss={headerLinkStyle} />
           </Typography>
           {accountIcon === true &&
             (isAuthenticated ? (

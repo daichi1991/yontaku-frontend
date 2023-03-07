@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Home } from './pages/Home'
-import { SignIn } from './pages/SignIn'
-import { SignUpForm } from './pages/SignUpForm'
+import { Home } from './pages/Home/Index'
+import { SignIn } from './pages/SignIn/Index'
+import { SignUpForm } from './pages/SignUpForm/Index'
 
 export const Container: React.FC = () => {
   return (

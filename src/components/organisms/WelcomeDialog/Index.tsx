@@ -1,6 +1,6 @@
-import { CommonDialog } from '../atoms/Dialog/Index'
+import { CommonDialog } from '../../atoms/Dialog/Index'
 
-interface Props {
+export interface Props {
   open: boolean
   onClose: () => void
 }

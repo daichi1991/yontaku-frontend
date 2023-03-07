@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { AuthUserContext } from '../../contexts/authUserContext'
 import { auth } from '../../firebase'
 import { TextFieldProps } from '../../types'
-import { PageTitle } from '../atoms/Title/Index'
+import { CommonTitle } from '../atoms/Title/Index'
 import { Header } from '../organisms/Header'
 import { SignUpForm } from '../organisms/SignUpForm'
 
@@ -55,7 +55,7 @@ export const SignUpFormTemplate: React.FC = () => {
   return (
     <>
       <Header menuIcon={false} accountIcon={false} />
-      <PageTitle pageTitleText="会員登録" />
+      <CommonTitle titleText="会員登録" />
       <SignUpForm
         variant="contained"
         buttonText="同意して登録"

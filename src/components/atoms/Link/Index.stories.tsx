@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { CommonLink, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
-  title: 'CommonLink',
+  title: 'Atoms/Link',
   component: CommonLink,
   decorators: [
     (Story) => (

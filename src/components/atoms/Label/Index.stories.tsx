@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react/types-6-0'
 import { InputFormLabel, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
-  title: 'InputFormLabel',
+  title: 'Atoms/Label',
   component: InputFormLabel
 }
 

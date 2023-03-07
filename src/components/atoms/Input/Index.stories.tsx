@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react/types-6-0'
 import { Props, TextInput } from './Index'
 
 const StoryBook: Meta<Props> = {
-  title: 'TextInput',
+  title: 'Atoms/Input',
   component: TextInput
 }
 

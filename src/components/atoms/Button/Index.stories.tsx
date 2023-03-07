@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react/types-6-0'
 import { CommonButton, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
-  title: 'CommonButton',
+  title: 'Atoms/Button',
   component: CommonButton
 }
 

@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react/types-6-0'
 import { CommonDialog, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
-  title: 'CommonDialog',
+  title: 'Atoms/Dialog',
   component: CommonDialog
 }
 

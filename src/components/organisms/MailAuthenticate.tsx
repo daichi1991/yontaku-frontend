@@ -1,5 +1,5 @@
 import { TextFieldProps } from '../../types'
-import { CommonTextField } from '../molecules/TextInput'
+import { CommonTextField } from '../molecules/TextField/Index'
 
 interface Props {
   mailAddress: TextFieldProps

@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@emotion/react'
 import { addDecorator } from '@storybook/react'
 import { MemoryRouter } from 'react-router-dom'
+import { MediaQueryProvider } from '../src/contexts/mediaQueryContext'
 import { theme } from '../src/styles/theme'
 
 addDecorator((storyFn) => <MemoryRouter>{storyFn()}</MemoryRouter>)
@@ -8,7 +9,9 @@ addDecorator((storyFn) => <MemoryRouter>{storyFn()}</MemoryRouter>)
 export const withMuiTheme = (Story) => {
   return (
     <ThemeProvider theme={theme}>
-      <Story />
+      <MediaQueryProvider>
+        <Story />
+      </MediaQueryProvider>
     </ThemeProvider>
   )
 }

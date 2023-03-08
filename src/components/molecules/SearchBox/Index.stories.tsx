@@ -13,5 +13,5 @@ export const Index = Template.bind({})
 export default StoryBook
 
 Index.args = {
-  isMobile: false
+  elevation: 1
 }

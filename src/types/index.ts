@@ -1,5 +1,13 @@
 import { ReactElement } from 'react'
 
+export interface TextInputProps {
+  placeholder: string | undefined
+  inputType: string
+  inputName: string
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  inputValue: string
+}
+
 export interface TextFieldProps {
   labelText?: string
   placeholder: string | undefined

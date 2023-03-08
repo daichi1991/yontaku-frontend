@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import TextField from '@mui/material/TextField'
+import { TextInputProps } from '../../../types'
 
 const textField = css({
   width: '100%',
@@ -7,13 +8,7 @@ const textField = css({
   marginBottom: '20px'
 })
 
-export interface Props {
-  placeholder: string | undefined
-  inputType: string
-  inputName: string
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  inputValue: string
-}
+export interface Props extends TextInputProps {}
 
 export const TextInput: React.FC<Props> = (props: Props) => {
   const { placeholder, inputType, inputName, handleChange, inputValue } = props

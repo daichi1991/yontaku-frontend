@@ -15,7 +15,7 @@ import { AuthUserContext } from '../../../contexts/authUserContext'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { HeaderType } from '../../../types'
 import { CommonLink } from '../../atoms/Link/Index'
-import { SearchBox } from '../../molecules/SearchBox/Index'
+import { SearchBox } from '../../atoms/SearchBox/Index'
 
 export interface Props extends HeaderType {}
 
@@ -68,37 +68,40 @@ export const Header: React.FC<Props> = (props: Props) => {
               <Typography variant="h6" component="div" sx={{ flexGrow: 14 }}>
                 <CommonLink linkTo="/" linkText="ヨンタク！" linkCss={headerLinkStyle} />
               </Typography>
-              <div style={{ flexGrow: 1 }}>
-                <SearchBox elevation={0} />
-              </div>
-              {accountIcon === true &&
-                (isAuthenticated ? (
-                  <div>
-                    <IconButton
-                      size="large"
-                      aria-label="account of current user"
-                      aria-controls="menu-appbar"
-                      aria-haspopup="true"
-                      onClick={handleMenu}
-                      color="inherit"
-                    >
-                      <AccountCircleIcon />
-                    </IconButton>
-                    <Menu
-                      id="menu-appbar"
-                      anchorEl={anchorEl}
-                      keepMounted
-                      open={Boolean(anchorEl)}
-                      onClose={handleClose}
-                    >
-                      <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
-                    </Menu>
+              {accountIcon === true && (
+                <>
+                  <div style={{ flexGrow: 1 }}>
+                    <SearchBox elevation={0} />
                   </div>
-                ) : (
-                  <div>
-                    <CommonLink linkTo="/signin" linkText="ログイン" linkCss={headerLinkStyle} />
-                  </div>
-                ))}
+                  {isAuthenticated ? (
+                    <div>
+                      <IconButton
+                        size="large"
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit"
+                      >
+                        <AccountCircleIcon />
+                      </IconButton>
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <div>
+                      <CommonLink linkTo="/signin" linkText="ログイン" linkCss={headerLinkStyle} />
+                    </div>
+                  )}
+                </>
+              )}
             </>
           )}
           {isPcSite === false &&
@@ -131,43 +134,50 @@ export const Header: React.FC<Props> = (props: Props) => {
                 <Typography variant="h6" component="div" sx={{ flexGrow: 14 }}>
                   <CommonLink linkTo="/" linkText="ヨンタク！" linkCss={headerLinkStyle} />
                 </Typography>
-                <IconButton
-                  color="inherit"
-                  type="button"
-                  sx={{ p: '10px' }}
-                  aria-label="search"
-                  onClick={handleOnSearchBox}
-                >
-                  <SearchIcon />
-                </IconButton>
-                {accountIcon === true &&
-                  (isAuthenticated ? (
-                    <div>
-                      <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleMenu}
-                        color="inherit"
-                      >
-                        <AccountCircleIcon />
-                      </IconButton>
-                      <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
-                      </Menu>
-                    </div>
-                  ) : (
-                    <div>
-                      <CommonLink linkTo="/signin" linkText="ログイン" linkCss={headerLinkStyle} />
-                    </div>
-                  ))}
+                {accountIcon && (
+                  <>
+                    <IconButton
+                      color="inherit"
+                      type="button"
+                      sx={{ p: '10px' }}
+                      aria-label="search"
+                      onClick={handleOnSearchBox}
+                    >
+                      <SearchIcon />
+                    </IconButton>
+                    {isAuthenticated ? (
+                      <div>
+                        <IconButton
+                          size="large"
+                          aria-label="account of current user"
+                          aria-controls="menu-appbar"
+                          aria-haspopup="true"
+                          onClick={handleMenu}
+                          color="inherit"
+                        >
+                          <AccountCircleIcon />
+                        </IconButton>
+                        <Menu
+                          id="menu-appbar"
+                          anchorEl={anchorEl}
+                          keepMounted
+                          open={Boolean(anchorEl)}
+                          onClose={handleClose}
+                        >
+                          <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
+                        </Menu>
+                      </div>
+                    ) : (
+                      <div>
+                        <CommonLink
+                          linkTo="/signin"
+                          linkText="ログイン"
+                          linkCss={headerLinkStyle}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
               </>
             ))}
         </Toolbar>

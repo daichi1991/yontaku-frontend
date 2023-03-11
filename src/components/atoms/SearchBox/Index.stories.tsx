@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { Props, SearchBox } from '../../molecules/SearchBox/Index'
+import { Props, SearchBox } from '../../atoms/SearchBox/Index'
 
 const StoryBook: Meta<Props> = {
   title: 'Molecules/SearchBox',

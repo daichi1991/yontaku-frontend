@@ -31,7 +31,7 @@ export const SearchBox: React.FC<Props> = (props: Props) => {
       elevation={elevation}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 1, flex: 1, lineHeight: 34 }}
         placeholder="キーワード"
         value={keyword}
         onChange={handleChangeKeyword}

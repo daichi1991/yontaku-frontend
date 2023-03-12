@@ -1,4 +1,6 @@
 import { Grid } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { getSubjectIndex } from '../../../apis/subject'
 import { Subject } from '../../atoms/Subject/Index'
 
 interface subjectType {
@@ -6,12 +8,14 @@ interface subjectType {
   name: string
 }
 
-export interface Props {
-  subjects: subjectType[]
-}
+export const SubjectList: React.FC = () => {
+  const [subjects, setSubjects] = useState<subjectType[]>([{ image: '', name: '' }])
 
-export const SubjectList: React.FC<Props> = (props: Props) => {
-  const { subjects } = props
+  useEffect(() => {
+    void getSubjectIndex().then((data: React.SetStateAction<subjectType[]>) => {
+      setSubjects(data)
+    })
+  }, [])
 
   return (
     <Grid

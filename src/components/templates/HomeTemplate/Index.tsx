@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Header } from '../../organisms/Header/Index'
+import { SubjectList } from '../../organisms/SubjectList/Index'
 import { WelcomDialog } from '../../organisms/WelcomeDialog/Index'
 
 export const HomeTemplate: React.FC = () => {
@@ -14,6 +15,7 @@ export const HomeTemplate: React.FC = () => {
     <>
       <Header menuIcon={true} accountIcon={true} />
       <WelcomDialog open={open} onClose={handleClose} />
+      <SubjectList />
     </>
   )
 }

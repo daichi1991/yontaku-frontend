@@ -8,4 +8,6 @@ export const requestHeader = {
   'Content-Type': 'application/json'
 }
 
-export const subjectUrl = `${DEFAULT_URL}/subjects.json`
+export const subjectUrl = `${DEFAULT_URL}/subjects`
+
+export const productUrl = `${DEFAULT_URL}/products`

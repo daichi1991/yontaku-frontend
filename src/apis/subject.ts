@@ -3,7 +3,7 @@ import { requestHeader, subjectUrl } from '../utils/urls'
 
 export const getSubjectIndex = async (): Promise<any> => {
   return await axios
-    .get(subjectUrl, {
+    .get(subjectUrl + '.json', {
       headers: requestHeader
     })
     .then((res) => {

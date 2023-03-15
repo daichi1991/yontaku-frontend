@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { getSubjectIndex } from '../../../apis/subject'
-import { Subject } from '../../atoms/Subject/Index'
+import { CommonImage } from '../../atoms/Image/Index'
 
 interface subjectType {
   image: string
@@ -25,7 +25,14 @@ export const SubjectList: React.FC = () => {
     >
       {subjects?.map((subject, index) => (
         <Grid item xs={6} sm={4} md={3} lg={2} key={index}>
-          <Subject key={index} image={subject.image} name={subject.name} />
+          <CommonImage
+            key={index}
+            image={subject.image}
+            imageMaxWidth={300}
+            imageMaxHeight={200}
+            imageTitleFilter={true}
+            titleText={subject.name}
+          />
         </Grid>
       ))}
     </Grid>

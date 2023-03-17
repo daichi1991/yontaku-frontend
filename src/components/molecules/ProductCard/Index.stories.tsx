@@ -12,9 +12,9 @@ export const Index = Template.bind({})
 
 Index.args = {
   image: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-  title: '最難関私立文系英単語100問',
+  name: '最難関私立文系英単語100問',
   auther: '作者名XYZ',
-  ratingValue: 4.5,
+  ratingScore: 4.5,
   ratingAmount: 30,
   questionAmount: 100,
   price: 1000

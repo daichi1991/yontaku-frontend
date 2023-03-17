@@ -6,7 +6,7 @@ const StoryBook: Meta = {
   component: SearchResultTemplate
 }
 
-const Template: Story = (args) => <SearchResultTemplate {...args} />
+const Template: Story = (args) => <SearchResultTemplate subjectKey={'english'} {...args} />
 
 export const Index = Template.bind({})
 

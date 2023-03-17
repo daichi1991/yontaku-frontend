@@ -14,7 +14,6 @@ export interface Props {
 
 export const CommonLink: React.FC<Props> = (props: Props) => {
   const { linkTo, linkText, linkCss } = props
-  console.log(props)
   const style = linkCss === undefined ? commonLinkStyle : linkCss
   return (
     <Link to={linkTo} css={style}>

@@ -1,10 +1,12 @@
 import axios from 'axios'
 import { productUrl, requestHeader } from '../utils/urls'
 
-export const getProductSearchBySubject = async (subjectKey: string): Promise<any> => {
-  const param = `?subject=${subjectKey}`
+export const getProductSearchBySubject = async (subjectKey: string | undefined): Promise<any> => {
+  if (subjectKey === undefined) {
+    return
+  }
   return await axios
-    .get(productUrl + param + '.json', {
+    .get(productUrl + '/search_by_subject.json?subject=' + subjectKey, {
       headers: requestHeader
     })
     .then((res) => {

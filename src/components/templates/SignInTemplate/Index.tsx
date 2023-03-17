@@ -41,7 +41,6 @@ export const SignInTemplate: React.FC = () => {
   }
 
   const handleSignIn = (): void => {
-    console.log('signIn')
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setIsAuthenticated(true)

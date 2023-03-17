@@ -32,7 +32,7 @@ export const AuthUserProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           console.log(idToken)
         })
         .catch((error) => {
-          console.log(error)
+          console.error(error)
         })
     })
     return () => {

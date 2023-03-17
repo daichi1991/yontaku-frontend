@@ -3,19 +3,19 @@ import { Rating } from '@mui/material'
 import { useState } from 'react'
 
 export interface Props {
-  ratingValue: number
+  ratingScore: number
   precision: number
   readOnly: boolean
 }
 
 export const CommonRating: React.FC<Props> = (props: Props) => {
-  const { ratingValue, precision, readOnly } = props
-  const [value, setValue] = useState<number | null>(ratingValue)
+  const { ratingScore, precision, readOnly } = props
+  const [value, setValue] = useState<number | null>(null)
 
   return (
     <Rating
       name="text-feedback"
-      value={value}
+      value={value === null ? ratingScore : value}
       readOnly={readOnly}
       onChange={(event, newValue) => {
         setValue(newValue)

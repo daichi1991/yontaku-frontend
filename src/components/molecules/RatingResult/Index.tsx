@@ -2,12 +2,12 @@ import { Box } from '@mui/material'
 import { CommonRating } from '../../atoms/Rating/Index'
 
 export interface Props {
-  ratingValue: number
+  ratingScore: number
   ratingAmount: number
 }
 
 export const RatingResult: React.FC<Props> = (props: Props) => {
-  const { ratingValue, ratingAmount } = props
+  const { ratingScore, ratingAmount } = props
   return (
     <Box
       sx={{
@@ -16,8 +16,8 @@ export const RatingResult: React.FC<Props> = (props: Props) => {
         alignItems: 'center'
       }}
     >
-      <Box sx={{ mr: 1 }}>{ratingValue}</Box>
-      <CommonRating ratingValue={ratingValue} precision={0.5} readOnly={true} />
+      <Box sx={{ mr: 1 }}>{ratingScore}</Box>
+      <CommonRating ratingScore={ratingScore} precision={0.5} readOnly={true} />
       <Box sx={{ ml: 1 }}>&#40;{ratingAmount}&#41;</Box>
     </Box>
   )

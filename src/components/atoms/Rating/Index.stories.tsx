@@ -11,7 +11,7 @@ const Template: Story<Props> = (args) => <CommonRating {...args} />
 export const Index = Template.bind({})
 
 Index.args = {
-  ratingValue: 3.5,
+  ratingScore: 3.5,
   precision: 0.5,
   readOnly: true
 }

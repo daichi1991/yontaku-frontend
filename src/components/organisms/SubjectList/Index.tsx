@@ -36,8 +36,7 @@ export const SubjectList: React.FC = () => {
             <CommonImage
               key={index}
               image={subject.image}
-              imageMaxWidth={300}
-              imageMaxHeight={200}
+              imageStyle={{ maxWidth: 300, maxHeight: 200 }}
               imageTitleFilter={true}
               titleText={subject.name}
             />

@@ -6,24 +6,17 @@ const sx = {
 
 export interface Props {
   image: string
-  imageMaxWidth: number
-  imageMaxHeight: number
   imageTitleFilter: boolean
+  imageStyle: {}
   titleText?: string
 }
 
 export const CommonImage: React.FC<Props> = (props: Props) => {
-  const { image, imageMaxWidth, imageMaxHeight, imageTitleFilter, titleText } = props
+  const { image, imageTitleFilter, titleText, imageStyle } = props
 
   return (
-    <ImageListItem sx={{ maxWidth: imageMaxWidth, maxHeight: imageMaxHeight }}>
-      <img
-        src={image}
-        srcSet={image}
-        alt={titleText}
-        loading="lazy"
-        style={{ maxWidth: imageMaxWidth, maxHeight: imageMaxHeight }}
-      />
+    <ImageListItem sx={imageStyle}>
+      <img src={image} srcSet={image} alt={titleText} loading="lazy" style={imageStyle} />
       {imageTitleFilter && <ImageListItemBar title={titleText} position={'bottom'} sx={sx} />}
     </ImageListItem>
   )

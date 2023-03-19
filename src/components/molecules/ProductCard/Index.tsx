@@ -1,4 +1,5 @@
 import { Box, Card, Typography } from '@mui/material'
+import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { CommonImage } from '../../atoms/Image/Index'
 import { RatingResult } from '../RatingResult/Index'
 
@@ -14,17 +15,37 @@ export interface Props {
 
 export const ProductCard: React.FC<Props> = (props: Props) => {
   const { image, name, auther, ratingScore, ratingAmount, questionAmount, price } = props
+  const { isMobileSite } = useMediaQueryContext()
+
   const defaultImage = 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e'
   const prodcutImage = image != null ? image : defaultImage
+  const mobileCardStyle = {
+    display: 'flex',
+    mt: 2
+  }
+  const pcTabletCardStyle = {
+    ml: 2,
+    width: 200
+  }
+
+  const cardStyle = isMobileSite ? mobileCardStyle : pcTabletCardStyle
+
+  const mobileImageStyle = {
+    maxWidth: 200,
+    maxHeight: 100
+  }
+
+  const pcTabletImageStyle = {
+    width: 200,
+    height: 100
+  }
+
+  const imageStyle = isMobileSite ? mobileImageStyle : pcTabletImageStyle
+
   return (
-    <Card sx={{ display: 'flex', background: '#f1f1f1', mt: 2 }}>
+    <Card sx={cardStyle}>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <CommonImage
-          image={prodcutImage}
-          imageMaxWidth={200}
-          imageMaxHeight={100}
-          imageTitleFilter={false}
-        />
+        <CommonImage image={prodcutImage} imageTitleFilter={false} imageStyle={imageStyle} />
       </Box>
       <Box sx={{ ml: 2, display: 'flex', alignItems: 'center', paddingTop: 1, paddingBottom: 1 }}>
         <Box>

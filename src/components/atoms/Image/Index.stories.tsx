@@ -11,8 +11,7 @@ const Template: Story<Props> = (args) => <CommonImage {...args} />
 export const Index = Template.bind({})
 Index.args = {
   image: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-  imageMaxWidth: 300,
-  imageMaxHeight: 180,
+  imageStyle: { width: 200 },
   imageTitleFilter: true,
   titleText: '英語'
 }

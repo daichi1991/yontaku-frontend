@@ -1,5 +1,7 @@
+import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { getProductSearchBySubject } from '../../../apis/product'
+import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { ProductCard } from '../../molecules/ProductCard/Index'
 
 export interface Props {
@@ -42,16 +44,18 @@ const defaultProduct = {
 
 export const ProductSearchBySubject: React.FC<Props> = (props: Props) => {
   const { subjectKey } = props
+  const { isMobileSite } = useMediaQueryContext()
   const [products, setProducts] = useState<productType[]>([defaultProduct])
+
+  const displayStyle = isMobileSite ? 'block' : 'flex'
 
   useEffect(() => {
     void getProductSearchBySubject(subjectKey).then((data: React.SetStateAction<productType[]>) => {
       setProducts(data)
     })
   }, [])
-
   return (
-    <>
+    <Box sx={{ display: displayStyle }}>
       {products?.map((product, index) => (
         <ProductCard
           key={index}
@@ -64,6 +68,6 @@ export const ProductSearchBySubject: React.FC<Props> = (props: Props) => {
           price={product.sale.price}
         />
       ))}
-    </>
+    </Box>
   )
 }

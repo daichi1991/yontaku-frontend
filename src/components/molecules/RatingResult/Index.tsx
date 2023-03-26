@@ -8,7 +8,6 @@ export interface Props {
 
 export const RatingResult: React.FC<Props> = (props: Props) => {
   const { ratingScore, ratingAmount } = props
-  console.log(ratingScore)
   return (
     <Box
       sx={{

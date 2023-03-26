@@ -1,17 +1,16 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { SearchResultTemplate, Props } from '../../templates/SearchResultTemplate/Index'
+import { ProductSearchResult, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
-  title: 'Templates/SearchResultTemplate',
-  component: SearchResultTemplate
+  title: 'Organisms/ProductSearchResult',
+  component: ProductSearchResult
 }
 
-const Template: Story<Props> = (args) => <SearchResultTemplate {...args} />
+const Template: Story<Props> = (args) => <ProductSearchResult {...args} />
 
 export const Index = Template.bind({})
 
 Index.args = {
-  subjectKey: 'english',
   products: [
     {
       id: '56275d09-d68a-43db-a0e1-a08afd4e54ee',

@@ -1,11 +1,10 @@
 import { Box } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { getProductSearchBySubject } from '../../../apis/product'
+import React from 'react'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { ProductCard } from '../../molecules/ProductCard/Index'
 
 export interface Props {
-  subjectKey: string | undefined
+  products: productType[]
 }
 
 interface productType {
@@ -20,40 +19,17 @@ interface productType {
   }
   rate: {
     amount: number
-    score: number
+    score: number | null
   }
   question_amount: number
 }
 
-const defaultProduct = {
-  id: '',
-  auther_id: '',
-  name: '',
-  description: '',
-  image: null,
-  sale: {
-    price: 0,
-    publish: false
-  },
-  rate: {
-    amount: 0,
-    score: 0
-  },
-  question_amount: 0
-}
-
-export const ProductSearchBySubject: React.FC<Props> = (props: Props) => {
-  const { subjectKey } = props
+export const ProductSearchResult: React.FC<Props> = (props: Props) => {
+  const { products } = props
   const { isMobileSite } = useMediaQueryContext()
-  const [products, setProducts] = useState<productType[]>([defaultProduct])
 
   const displayStyle = isMobileSite ? 'block' : 'flex'
 
-  useEffect(() => {
-    void getProductSearchBySubject(subjectKey).then((data: React.SetStateAction<productType[]>) => {
-      setProducts(data)
-    })
-  }, [])
   return (
     <Box sx={{ display: displayStyle }}>
       {products?.map((product, index) => (

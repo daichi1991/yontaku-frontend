@@ -11,7 +11,7 @@ export const Container: React.FC = () => {
         <Route path={'/'} element={<Home />} />
         <Route path={'/signin'} element={<SignIn />} />
         <Route path={'/signup/form'} element={<SignUpForm />} />
-        <Route path={'/search/result/:param'} element={<SearchResult />} />
+        <Route path={'/search/result'} element={<SearchResult />} />
       </Routes>
     </BrowserRouter>
   )

@@ -9,10 +9,11 @@ import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 
 export interface Props {
   elevation: number
+  clickFunction: (keyword: string) => Promise<void>
 }
 
 export const SearchBox: React.FC<Props> = (props: Props) => {
-  const { elevation } = props
+  const { elevation, clickFunction } = props
   const { isMobileSite } = useMediaQueryContext()
   const [keyword, setKeyword] = useState<string>('')
 
@@ -22,6 +23,10 @@ export const SearchBox: React.FC<Props> = (props: Props) => {
 
   const handleCrearKeyword = (): void => {
     setKeyword('')
+  }
+
+  const handleClick = (): void => {
+    void clickFunction(keyword)
   }
 
   return (
@@ -42,7 +47,13 @@ export const SearchBox: React.FC<Props> = (props: Props) => {
       {isMobileSite === false && (
         <>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton color="primary" type="button" sx={{ p: '10px' }} aria-label="search">
+          <IconButton
+            color="primary"
+            type="button"
+            sx={{ p: '10px' }}
+            aria-label="search"
+            onClick={handleClick}
+          >
             <SearchIcon />
           </IconButton>
         </>

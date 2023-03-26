@@ -7,7 +7,7 @@ export interface Props {
   image: string | null
   name: string
   auther: string
-  ratingScore: number
+  ratingScore: number | null
   ratingAmount: number
   questionAmount: number
   price: number

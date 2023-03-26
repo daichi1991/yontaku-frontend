@@ -46,3 +46,20 @@ export interface UserType {
   id: string
   username: string
 }
+
+export interface productType {
+  id: string
+  auther_id: string
+  name: string
+  description: string
+  image: string | null
+  sale: {
+    price: number
+    publish: boolean
+  }
+  rate: {
+    amount: number
+    score: number | null
+  }
+  question_amount: number
+}

@@ -11,6 +11,8 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
 import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getProductSearchByKeyword } from '../../../apis/product'
 import { AuthUserContext } from '../../../contexts/authUserContext'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { HeaderType } from '../../../types'
@@ -20,6 +22,7 @@ import { SearchBox } from '../../atoms/SearchBox/Index'
 export interface Props extends HeaderType {}
 
 export const Header: React.FC<Props> = (props: Props) => {
+  const navigate = useNavigate()
   const { menuIcon, accountIcon } = props
   const { isPcSite } = useMediaQueryContext()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -48,6 +51,15 @@ export const Header: React.FC<Props> = (props: Props) => {
     setOnSearchBox(!onSearchBox)
   }
 
+  const handleProductSearchByKeyword = async (keyword: string): Promise<void> => {
+    const data = await getProductSearchByKeyword(keyword)
+    navigate('/search/result', {
+      state: {
+        products: data
+      }
+    })
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="primary">
@@ -71,7 +83,7 @@ export const Header: React.FC<Props> = (props: Props) => {
               {accountIcon === true && (
                 <>
                   <div style={{ flexGrow: 1 }}>
-                    <SearchBox elevation={0} />
+                    <SearchBox elevation={0} clickFunction={handleProductSearchByKeyword} />
                   </div>
                   {isAuthenticated ? (
                     <div>
@@ -116,7 +128,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                 >
                   <ArrowBackIosIcon />
                 </IconButton>
-                <SearchBox elevation={0} />
+                <SearchBox elevation={0} clickFunction={handleProductSearchByKeyword} />
               </>
             ) : (
               <>

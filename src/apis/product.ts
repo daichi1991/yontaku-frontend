@@ -17,3 +17,20 @@ export const getProductSearchBySubject = async (subjectKey: string | undefined):
       return null
     })
 }
+
+export const getProductSearchByKeyword = async (keyword: string | undefined): Promise<any> => {
+  if (keyword === undefined) {
+    return
+  }
+  return await axios
+    .get(productUrl + '/search.json?q=' + keyword, {
+      headers: requestHeader
+    })
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      console.error(error)
+      return null
+    })
+}

@@ -1,7 +1,13 @@
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { SearchResultTemplate } from '../../templates/SearchResultTemplate/Index'
 
+// interface LocationState {
+//   products: productType[]
+// }
+
 export const SearchResult: React.FC = () => {
+  const location = useLocation()
+  const products = location.state?.products ?? []
   const subjectKey = useParams().param
-  return <SearchResultTemplate subjectKey={subjectKey} />
+  return <SearchResultTemplate subjectKey={subjectKey} products={products} />
 }

@@ -33,16 +33,7 @@ export const ProductSearchResult: React.FC<Props> = (props: Props) => {
   return (
     <Box sx={{ display: displayStyle }}>
       {products?.map((product, index) => (
-        <ProductCard
-          key={index}
-          image={product.image}
-          name={product.name}
-          auther={product.auther_id}
-          ratingScore={product.rate.score}
-          ratingAmount={product.rate.amount}
-          questionAmount={product.question_amount}
-          price={product.sale.price}
-        />
+        <ProductCard key={index} product={product} />
       ))}
     </Box>
   )

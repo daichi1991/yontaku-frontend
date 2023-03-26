@@ -29,6 +29,13 @@ export const SearchBox: React.FC<Props> = (props: Props) => {
     void clickFunction(keyword)
   }
 
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      void clickFunction(keyword)
+    }
+  }
+
   return (
     <Paper
       component="form"
@@ -40,7 +47,9 @@ export const SearchBox: React.FC<Props> = (props: Props) => {
         placeholder="キーワード"
         value={keyword}
         onChange={handleChangeKeyword}
+        onKeyPress={handleKeyPress}
       />
+
       <IconButton type="button" sx={{ p: '10px' }} aria-label="crear" onClick={handleCrearKeyword}>
         <ClearIcon />
       </IconButton>

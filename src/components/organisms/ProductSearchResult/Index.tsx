@@ -1,27 +1,11 @@
 import { Box } from '@mui/material'
 import React from 'react'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
+import { productType } from '../../../types'
 import { ProductCard } from '../../molecules/ProductCard/Index'
 
 export interface Props {
   products: productType[]
-}
-
-interface productType {
-  id: string
-  auther_id: string
-  name: string
-  description: string
-  image: string | null
-  sale: {
-    price: number
-    publish: boolean
-  }
-  rate: {
-    amount: number
-    score: number | null
-  }
-  question_amount: number
 }
 
 export const ProductSearchResult: React.FC<Props> = (props: Props) => {

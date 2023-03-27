@@ -9,7 +9,7 @@ const containedButton = css({
 export interface Props {
   variant: string
   buttonText: string
-  handleFunction: () => void
+  handleFunction: () => any
 }
 
 export const CommonButton: React.FC<Props> = (props: Props) => {

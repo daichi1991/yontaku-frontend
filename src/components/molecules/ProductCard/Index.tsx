@@ -59,7 +59,7 @@ export const ProductCard: React.FC<Props> = (props: Props) => {
             {product.name}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
-            {product.auther_id}
+            {product.user.username}
           </Typography>
           <RatingResult ratingScore={product.rate.score} ratingAmount={product.rate.amount} />
           <Typography variant="subtitle1" color="text.secondary" component="div">

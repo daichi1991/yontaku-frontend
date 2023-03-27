@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { Crop, PixelCrop } from 'react-image-crop'
 
 export interface TextInputProps {
   placeholder: string | undefined
@@ -49,10 +50,13 @@ export interface UserType {
 
 export interface productType {
   id: string
-  auther_id: string
   name: string
   description: string
   image: string | null
+  user: {
+    id: string
+    username: string
+  }
   sale: {
     price: number
     publish: boolean
@@ -62,4 +66,39 @@ export interface productType {
     score: number | null
   }
   question_amount: number
+}
+
+export interface ReactCropProps {
+  src: string
+  crop?: Crop
+  onImageLoaded?: (image: HTMLImageElement) => void
+  onComplete?: (crop: Crop, pixelCrop: PixelCrop) => void
+  onChange?: (crop: Crop, pixelCrop: PixelCrop) => void
+  onDragStart?: () => void
+  onDragEnd?: () => void
+  crossorigin?: HTMLImageElement['crossOrigin']
+  crossoriginUseCredentials?: HTMLImageElement['crossOrigin']
+  imageAlt?: string
+  imageStyle?: React.CSSProperties
+  className?: string
+  style?: React.CSSProperties
+  disabled?: boolean
+  locked?: boolean
+  renderSelectionAddon?: (state: Selection) => JSX.Element | null
+  ruleOfThirds?: boolean
+  circularCrop?: boolean
+  minWidth?: number
+  minHeight?: number
+  maxWidth?: number
+  maxHeight?: number
+  keepSelection?: boolean
+  cropShape?: 'rect' | 'round'
+  showGrid?: boolean
+  zoomWithScroll?: boolean
+  zoomSpeed?: number
+  onZoomChange?: (zoom: number) => void
+  onAspectRatioChange?: (crop: Crop, pixelCrop: PixelCrop) => void
+  circularCropRadius?: number
+  styleWithZoom?: boolean
+  zoomCropPadding?: number
 }

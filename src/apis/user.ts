@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { userUrl } from '../utils/urls'
 
-export const postUpdataAvater = async (data: FormData, userToken: string): Promise<any> => {
+export const putUpdataAvater = async (data: FormData, userToken: string): Promise<any> => {
   const requestUrl = userUrl + '/update.json'
   return await axios
     .request({
@@ -9,11 +9,7 @@ export const postUpdataAvater = async (data: FormData, userToken: string): Promi
       url: requestUrl,
       headers: { 'Content-Type': 'image/jpeg', Authorization: `Bearer ${userToken}` },
       withCredentials: true,
-      params: {
-        user: {
-          image: data
-        }
-      }
+      data
     })
     .then((res) => {
       return res.data

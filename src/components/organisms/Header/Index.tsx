@@ -3,7 +3,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
-import { Typography } from '@mui/material'
+import { Avatar, Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
@@ -27,7 +27,7 @@ export const Header: React.FC<Props> = (props: Props) => {
   const { isPcSite } = useMediaQueryContext()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [onSearchBox, setOnSearchBox] = useState<boolean>(false)
-  const { isAuthenticated, setIsAuthenticated } = useContext(AuthUserContext)
+  const { isAuthenticated, setIsAuthenticated, userInfo } = useContext(AuthUserContext)
 
   const headerLinkStyle = css({
     color: '#fff',
@@ -95,7 +95,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                         onClick={handleMenu}
                         color="inherit"
                       >
-                        <AccountCircleIcon />
+                        <Avatar src={userInfo?.image.url} />
                       </IconButton>
                       <Menu
                         id="menu-appbar"

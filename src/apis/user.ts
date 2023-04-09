@@ -19,3 +19,21 @@ export const putUpdataAvater = async (data: FormData, userToken: string): Promis
       return null
     })
 }
+
+export const getCurrentUserInfo = async (idToken: string): Promise<any> => {
+  const requestUrl = userUrl + '/current_user_information.json'
+  return await axios
+    .request({
+      method: 'get',
+      url: requestUrl,
+      headers: { Authorization: `Bearer ${idToken}` },
+      withCredentials: true
+    })
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      console.error(error)
+      return null
+    })
+}

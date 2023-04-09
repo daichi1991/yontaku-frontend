@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useEffect } from 'react'
+import { getCurrentUserInfo } from '../apis/user'
 import { auth } from '../firebase'
+import { UserType } from '../types'
 
 const { createContext, useState } = React
 
@@ -9,6 +11,7 @@ interface AuthUserType {
   setIsAuthenticated: (isAuthenticated: boolean) => void
   userToken: string
   setUserToken: (userToken: string) => void
+  userInfo?: UserType
 }
 
 export const AuthUserContext = createContext<AuthUserType>({
@@ -21,6 +24,12 @@ export const AuthUserContext = createContext<AuthUserType>({
 export const AuthUserProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [userToken, setUserToken] = useState<string>('')
+  const [userInfo, setUserInfo] = useState<UserType>({
+    id: '',
+    username: '',
+    image: { url: '' },
+    active: false
+  })
 
   useEffect(() => {
     const getIdToken = auth.onAuthStateChanged((user) => {
@@ -30,6 +39,10 @@ export const AuthUserProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           setUserToken(idToken)
           setIsAuthenticated(true)
           console.log(idToken)
+          void getCurrentUserInfo(idToken).then((res) => {
+            console.log(res)
+            setUserInfo(res)
+          })
         })
         .catch((error) => {
           console.error(error)
@@ -42,7 +55,7 @@ export const AuthUserProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   return (
     <AuthUserContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated, userToken, setUserToken }}
+      value={{ isAuthenticated, setIsAuthenticated, userToken, setUserToken, userInfo }}
     >
       {children}
     </AuthUserContext.Provider>

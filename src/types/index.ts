@@ -46,6 +46,10 @@ export interface AuthUser {
 export interface UserType {
   id: string
   username: string
+  image: {
+    url: string
+  }
+  active: boolean
 }
 
 export interface productType {

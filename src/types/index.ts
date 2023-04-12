@@ -1,21 +1,23 @@
 import { ReactElement } from 'react'
 import { Crop, PixelCrop } from 'react-image-crop'
 
-export interface TextInputProps {
-  placeholder: string | undefined
-  inputType: string
-  inputName: string
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  inputValue: string
+export interface AvatarProps {
+  avatarImage: string | undefined
+  avatarAlt: string
+  avatarSize: number
 }
 
-export interface TextFieldProps {
-  labelText?: string
-  placeholder: string | undefined
+export interface TextInputProps {
+  placeholder?: string
   inputType: string
   inputName: string
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   inputValue: string
+  textRows?: number
+}
+
+export interface TextFieldProps extends TextInputProps {
+  labelText?: string
 }
 
 export interface HeaderType {
@@ -46,6 +48,7 @@ export interface AuthUser {
 export interface UserType {
   id: string
   username: string
+  description: string
   image: {
     url: string
   }

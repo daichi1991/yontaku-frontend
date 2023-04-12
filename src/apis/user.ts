@@ -20,6 +20,34 @@ export const putUpdataAvater = async (data: FormData, userToken: string): Promis
     })
 }
 
+export const putUpdateUser = async (
+  username: string,
+  description: string,
+  userToken: string
+): Promise<any> => {
+  const requestUrl = userUrl + '/update.json'
+  return await axios
+    .request({
+      method: 'put',
+      url: requestUrl,
+      headers: { Authorization: `Bearer ${userToken}` },
+      withCredentials: true,
+      data: {
+        user: {
+          username,
+          description
+        }
+      }
+    })
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      console.error(error)
+      return null
+    })
+}
+
 export const getCurrentUserInfo = async (idToken: string): Promise<any> => {
   const requestUrl = userUrl + '/current_user_information.json'
   return await axios

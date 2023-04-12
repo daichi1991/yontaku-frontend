@@ -11,7 +11,7 @@ const textField = css({
 export interface Props extends TextInputProps {}
 
 export const TextInput: React.FC<Props> = (props: Props) => {
-  const { placeholder, inputType, inputName, handleChange, inputValue } = props
+  const { placeholder, inputType, inputName, handleChange, inputValue, textRows } = props
   return (
     <TextField
       placeholder={placeholder}
@@ -22,6 +22,8 @@ export const TextInput: React.FC<Props> = (props: Props) => {
       name={inputName}
       onChange={handleChange}
       value={inputValue}
+      multiline={inputType === 'textarea'}
+      rows={textRows != null ? textRows : 1}
     />
   )
 }

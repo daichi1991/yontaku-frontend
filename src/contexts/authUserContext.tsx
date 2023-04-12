@@ -27,6 +27,7 @@ export const AuthUserProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [userInfo, setUserInfo] = useState<UserType>({
     id: '',
     username: '',
+    description: '',
     image: { url: '' },
     active: false
   })

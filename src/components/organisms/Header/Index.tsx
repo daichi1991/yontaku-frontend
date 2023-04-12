@@ -3,7 +3,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
-import { Avatar, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
@@ -16,6 +16,7 @@ import { getProductSearchByKeyword } from '../../../apis/product'
 import { AuthUserContext } from '../../../contexts/authUserContext'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { HeaderType } from '../../../types'
+import { CommonAvatar } from '../../atoms/Avatar/Index'
 import { CommonLink } from '../../atoms/Link/Index'
 import { SearchBox } from '../../atoms/SearchBox/Index'
 
@@ -60,6 +61,10 @@ export const Header: React.FC<Props> = (props: Props) => {
     })
   }
 
+  const handleGotoEditUserProfile = (): void => {
+    navigate('/user/profile/edit')
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="primary">
@@ -95,7 +100,11 @@ export const Header: React.FC<Props> = (props: Props) => {
                         onClick={handleMenu}
                         color="inherit"
                       >
-                        <Avatar src={userInfo?.image.url} />
+                        <CommonAvatar
+                          avatarImage={userInfo?.image.url}
+                          avatarAlt={'current user'}
+                          avatarSize={40}
+                        />
                       </IconButton>
                       <Menu
                         id="menu-appbar"
@@ -104,6 +113,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                       >
+                        <MenuItem onClick={handleGotoEditUserProfile}>アカウント設定</MenuItem>
                         <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
                       </Menu>
                     </div>
@@ -176,6 +186,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                           open={Boolean(anchorEl)}
                           onClose={handleClose}
                         >
+                          <MenuItem onClick={handleGotoEditUserProfile}>アカウント設定</MenuItem>
                           <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
                         </Menu>
                       </div>

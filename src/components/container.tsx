@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AvaterUpload } from './pages/AvaterUpload/Index'
+import { EditUserProfile } from './pages/EditUserProfile/Index'
 import { Home } from './pages/Home/Index'
 import { Product } from './pages/Product/Index'
 import { SearchResult } from './pages/SearchResult/Index'
@@ -15,6 +16,7 @@ export const Container: React.FC = () => {
         <Route path={'/signup/form'} element={<SignUpForm />} />
         <Route path={'/search/result'} element={<SearchResult />} />
         <Route path={'/product'} element={<Product />} />
+        <Route path={'/user/profile/edit'} element={<EditUserProfile />} />
         <Route path={'/user/avater'} element={<AvaterUpload />} />
       </Routes>
     </BrowserRouter>

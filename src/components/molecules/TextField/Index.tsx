@@ -5,7 +5,7 @@ import { InputFormLabel } from '../../atoms/Label/Index'
 export interface Props extends TextFieldProps {}
 
 export const CommonTextField: React.FC<Props> = (props: Props) => {
-  const { labelText, placeholder, inputType, inputName, handleChange, inputValue } = props
+  const { labelText, placeholder, inputType, inputName, handleChange, inputValue, textRows } = props
   return (
     <>
       {labelText != null && (
@@ -20,6 +20,7 @@ export const CommonTextField: React.FC<Props> = (props: Props) => {
         inputName={inputName}
         handleChange={handleChange}
         inputValue={inputValue}
+        textRows={textRows}
       />
     </>
   )

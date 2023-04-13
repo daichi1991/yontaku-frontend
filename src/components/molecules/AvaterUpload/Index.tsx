@@ -107,7 +107,13 @@ export const AvaterUpload: React.FC = () => {
           )}
         </div>
         {typeof src === 'string' && (
-          <ReactCrop crop={crop} onChange={onCropChange} circularCrop onComplete={onCropComplete}>
+          <ReactCrop
+            crop={crop}
+            onChange={onCropChange}
+            circularCrop
+            onComplete={onCropComplete}
+            aspect={1}
+          >
             <img src={src} onLoad={onImageLoaded} />
           </ReactCrop>
         )}

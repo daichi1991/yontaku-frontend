@@ -41,12 +41,12 @@ export const AuthUserProvider: React.FC<{ children: React.ReactNode }> = ({ chil
           setIsAuthenticated(true)
           console.log(idToken)
           void getCurrentUserInfo(idToken).then((res) => {
-            console.log(res)
             setUserInfo(res)
           })
         })
         .catch((error) => {
           console.error(error)
+          setIsAuthenticated(true)
         })
     })
     return () => {

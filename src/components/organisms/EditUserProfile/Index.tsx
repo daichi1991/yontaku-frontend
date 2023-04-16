@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import EditIcon from '@mui/icons-material/Edit'
 import { Badge, Box, Grid } from '@mui/material'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { putUpdateUser } from '../../../apis/user'
 import { AuthUserContext } from '../../../contexts/authUserContext'
 import { CommonAvatar } from '../../atoms/Avatar/Index'
@@ -50,14 +50,8 @@ const formBlock = css({
 
 export const EditUserProfile: React.FC = () => {
   const { userInfo, userToken } = useContext(AuthUserContext)
-  const [username, setUsername] = useState<string>(
-    userInfo?.username !== undefined ? userInfo.username : ''
-  )
-
-  const [description, setDescription] = useState<string>(
-    userInfo?.description !== undefined ? userInfo.description : ''
-  )
-
+  const [username, setUsername] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
   const [openAvatarUpload, setOpenAvatarUpload] = useState<boolean>(false)
 
   const handleChangeUsername = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -80,12 +74,17 @@ export const EditUserProfile: React.FC = () => {
     setOpenAvatarUpload(false)
   }
 
+  useEffect(() => {
+    setUsername(userInfo?.username !== undefined ? userInfo.username : '')
+    setDescription(userInfo?.description !== undefined ? userInfo.description : '')
+  }, [userInfo])
+
   return (
     <>
       <Box css={editUserProfile}>
         <Box css={container}>
           <Grid container>
-            <Grid xs={12} sm={12} md={2}>
+            <Grid item xs={12} sm={12} md={2}>
               <Box onClick={handleOpenAvatarUpload} css={avatarBlock}>
                 <Badge
                   overlap="circular"
@@ -104,7 +103,7 @@ export const EditUserProfile: React.FC = () => {
                 </Badge>
               </Box>
             </Grid>
-            <Grid xs={12} sm={12} md={10}>
+            <Grid item xs={12} sm={12} md={10}>
               <Box css={formBlock}>
                 <CommonTextField
                   labelText={'ユーザーネーム'}

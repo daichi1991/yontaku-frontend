@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { CommonDialog } from '../../atoms/Dialog/Index'
 import { AvaterUpload } from '../../molecules/AvaterUpload/Index'
 
@@ -8,10 +9,10 @@ export interface Props {
 
 export const EditAvatarDialog: React.FC<Props> = (props: Props) => {
   const { open, onClose } = props
-  const dialogTitle = 'アバターを変更する'
+  const [hideCloseButton, setHideCloseButton] = useState<boolean>(false)
   const dialogContent = (
     <>
-      <AvaterUpload />
+      <AvaterUpload setHideCloseButton={setHideCloseButton} />
     </>
   )
 
@@ -19,8 +20,9 @@ export const EditAvatarDialog: React.FC<Props> = (props: Props) => {
     <CommonDialog
       open={open}
       onClose={onClose}
-      dialogTitle={dialogTitle}
+      dialogTitle={'アバター設定'}
       dialogContent={dialogContent}
+      hideCloseButton={hideCloseButton}
     />
   )
 }

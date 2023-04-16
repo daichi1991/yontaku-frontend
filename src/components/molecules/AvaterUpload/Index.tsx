@@ -1,15 +1,22 @@
-import { Button } from '@mui/material'
+import { Box } from '@mui/material'
 import * as React from 'react'
 import { useContext } from 'react'
 import ReactCrop, { Crop } from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
-import { putUpdataAvater } from '../../../apis/user'
+import { deleteAvatar, putUpdataAvatar } from '../../../apis/user'
 import { AuthUserContext } from '../../../contexts/authUserContext'
+import { CommonAvatar } from '../../atoms/Avatar/Index'
+import { CommonButton } from '../../atoms/Button/Index'
 
 const { useState } = React
 
-export const AvaterUpload: React.FC = () => {
-  const { userToken } = useContext(AuthUserContext)
+export interface Props {
+  setHideCloseButton: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const AvaterUpload: React.FC<Props> = (props: Props) => {
+  const { setHideCloseButton } = props
+  const { userToken, userInfo } = useContext(AuthUserContext)
   const [src, setSrc] = useState<FileReader['result']>(null)
   const [image, setImage] = useState<File | null>(null)
   const [crop, setCrop] = useState<Crop>({
@@ -20,6 +27,10 @@ export const AvaterUpload: React.FC = () => {
     height: 200
   })
   const [imageRef, setImageRef] = useState<HTMLImageElement | null>(null)
+  const [editMode, setEditMode] = useState<boolean>(false)
+  const [avatarUploadComplete, setAvatarUploadComplete] = useState<boolean>(false)
+  const [avatarDeleteConfirm, setAvatarDeleteConfirm] = useState<boolean>(false)
+  const [avatarDeleteComplete, setAvatarDeleteComplete] = useState<boolean>(false)
 
   const onSelectFile = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files != null && e.target.files.length > 0) {
@@ -76,8 +87,23 @@ export const AvaterUpload: React.FC = () => {
   const handleCreatePut = async (): Promise<void> => {
     const data = createFormData()
 
-    await putUpdataAvater(data, userToken)
-    setSrc(null)
+    await putUpdataAvatar(data, userToken).then(() => {
+      setSrc(null)
+      setHideCloseButton(true)
+      setAvatarUploadComplete(true)
+    })
+  }
+
+  const handleDeleteConfirm = (): void => {
+    setAvatarDeleteConfirm(true)
+  }
+
+  const handleDeleteAvatar = async (): Promise<void> => {
+    await deleteAvatar(userToken).then(() => {
+      setHideCloseButton(true)
+      setAvatarDeleteConfirm(false)
+      setAvatarDeleteComplete(true)
+    })
   }
 
   const dataURIConverter = (dataURI: string): File => {
@@ -90,34 +116,95 @@ export const AvaterUpload: React.FC = () => {
     return new File([buffer], 'avater.jpg', { type: mimeType })
   }
 
+  const handleEditMode = (): void => {
+    setEditMode(!editMode)
+  }
+
+  const handleReload = (): void => {
+    window.location.reload()
+  }
+
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          void handleCreatePut()
-        }}
-      >
-        <div>
-          <input type="file" accept="image/*" onChange={onSelectFile} />
-          {src != null && (
-            <Button type="submit" variant="contained" color="primary">
-              アップロード
-            </Button>
+      {avatarDeleteConfirm && !avatarUploadComplete && (
+        <>
+          <Box sx={{ display: 'block' }}>アバターを削除しますか？</Box>
+          <Box sx={{ display: 'flex' }}>
+            <CommonButton
+              variant={'contained'}
+              buttonText={'削除'}
+              handleFunction={handleDeleteAvatar}
+              style={{ minWidth: '120px' }}
+            />
+            <CommonButton
+              variant={'outlined'}
+              buttonText={'キャンセル'}
+              handleFunction={() => setAvatarDeleteConfirm(false)}
+              style={{ minWidth: '120px' }}
+            />
+          </Box>
+        </>
+      )}
+      {avatarUploadComplete && (
+        <>
+          <Box sx={{ display: 'block' }}>アップロードが完了しました</Box>
+          <CommonButton variant={'contained'} buttonText={'閉じる'} handleFunction={handleReload} />
+        </>
+      )}
+      {avatarDeleteComplete && (
+        <>
+          <Box sx={{ display: 'block' }}>削除が完了しました</Box>
+          <CommonButton variant={'contained'} buttonText={'閉じる'} handleFunction={handleReload} />
+        </>
+      )}
+      {!avatarDeleteConfirm && !avatarUploadComplete && !avatarDeleteComplete && editMode && (
+        <>
+          <div>
+            <input type="file" accept="image/*" onChange={onSelectFile} />
+          </div>
+          {typeof src === 'string' && (
+            <ReactCrop
+              crop={crop}
+              onChange={onCropChange}
+              circularCrop
+              onComplete={onCropComplete}
+              aspect={1}
+            >
+              <img src={src} onLoad={onImageLoaded} />
+            </ReactCrop>
           )}
-        </div>
-        {typeof src === 'string' && (
-          <ReactCrop
-            crop={crop}
-            onChange={onCropChange}
-            circularCrop
-            onComplete={onCropComplete}
-            aspect={1}
-          >
-            <img src={src} onLoad={onImageLoaded} />
-          </ReactCrop>
-        )}
-      </form>
+          {src != null && (
+            <CommonButton
+              variant="contained"
+              buttonText={'アップロード'}
+              handleFunction={handleCreatePut}
+            />
+          )}
+        </>
+      )}
+      {!avatarDeleteConfirm && !avatarUploadComplete && !avatarDeleteComplete && !editMode && (
+        <>
+          <CommonAvatar
+            avatarImage={userInfo?.image.url}
+            avatarAlt={'current user avater'}
+            avatarSize={240}
+          />
+          <Box sx={{ display: 'flex' }}>
+            <CommonButton
+              variant={'outlined'}
+              buttonText={'編集する'}
+              handleFunction={handleEditMode}
+            />
+            {userInfo?.image.url != null && (
+              <CommonButton
+                variant={'outlined'}
+                buttonText={'削除する'}
+                handleFunction={handleDeleteConfirm}
+              />
+            )}
+          </Box>
+        </>
+      )}
     </>
   )
 }

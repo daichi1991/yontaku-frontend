@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react'
-import { Container } from './components/container'
+import { Container } from './components/Container'
 import { AuthUserProvider } from './contexts/authUserContext'
 import { MediaQueryProvider } from './contexts/mediaQueryContext'
 import { theme } from './styles/theme'

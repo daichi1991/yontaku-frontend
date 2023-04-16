@@ -31,10 +31,11 @@ export interface DialogProps {
   dialogTitle: string | null
   dialogContent?: ReactElement
   dialogAction?: ReactElement
+  hideCloseButton?: boolean
 }
 
 export interface MailAuthenticateProps {
-  variant: string
+  variant: 'contained' | 'outlined' | 'text' | undefined
   buttonText: string
   email: TextFieldProps
   password: TextFieldProps

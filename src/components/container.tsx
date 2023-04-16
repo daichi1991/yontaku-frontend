@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AvaterUpload } from './pages/AvaterUpload/Index'
+import { RouteAuthGuard } from './RouteAuthGuard'
 import { EditUserProfile } from './pages/EditUserProfile/Index'
 import { Home } from './pages/Home/Index'
 import { Product } from './pages/Product/Index'
@@ -16,8 +16,10 @@ export const Container: React.FC = () => {
         <Route path={'/signup/form'} element={<SignUpForm />} />
         <Route path={'/search/result'} element={<SearchResult />} />
         <Route path={'/product'} element={<Product />} />
-        <Route path={'/user/profile/edit'} element={<EditUserProfile />} />
-        <Route path={'/user/avater'} element={<AvaterUpload />} />
+        <Route
+          path={'/user/profile/edit'}
+          element={<RouteAuthGuard component={<EditUserProfile />} />}
+        />
       </Routes>
     </BrowserRouter>
   )

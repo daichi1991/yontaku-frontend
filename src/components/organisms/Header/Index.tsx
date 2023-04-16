@@ -46,6 +46,7 @@ export const Header: React.FC<Props> = (props: Props) => {
   const handleSignOut = (): void => {
     setIsAuthenticated(false)
     setAnchorEl(null)
+    navigate('/signin')
   }
 
   const handleOnSearchBox = (): void => {

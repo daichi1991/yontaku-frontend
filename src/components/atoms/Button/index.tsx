@@ -3,19 +3,22 @@ import { Button } from '@mui/material'
 
 const containedButton = css({
   width: '100%',
-  marginTop: '20px'
+  marginTop: '20px',
+  marginLeft: '5px',
+  marginRight: '5px'
 })
 
 export interface Props {
-  variant: string
+  variant: 'contained' | 'outlined' | 'text' | undefined
   buttonText: string
   handleFunction: () => any
+  style?: any
 }
 
 export const CommonButton: React.FC<Props> = (props: Props) => {
-  const { buttonText, handleFunction } = props
+  const { variant, buttonText, handleFunction, style } = props
   return (
-    <Button variant="contained" css={containedButton} onClick={handleFunction}>
+    <Button variant={variant} css={containedButton} onClick={handleFunction} sx={style}>
       {buttonText}
     </Button>
   )

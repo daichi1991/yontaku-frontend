@@ -6,6 +6,7 @@ import { Product } from './pages/Product/Index'
 import { SearchResult } from './pages/SearchResult/Index'
 import { SignIn } from './pages/SignIn/Index'
 import { SignUpForm } from './pages/SignUpForm/Index'
+import { UserProfile } from './pages/UserProfile/Index'
 
 export const Container: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ export const Container: React.FC = () => {
         <Route path={'/signup/form'} element={<SignUpForm />} />
         <Route path={'/search/result'} element={<SearchResult />} />
         <Route path={'/product'} element={<Product />} />
+        <Route path={'/user/:userId'} element={<UserProfile />} />
         <Route
           path={'/user/profile/edit'}
           element={<RouteAuthGuard component={<EditUserProfile />} />}

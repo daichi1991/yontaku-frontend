@@ -34,3 +34,17 @@ export const getProductSearchByKeyword = async (keyword: string | undefined): Pr
       return null
     })
 }
+
+export const getProductSearchByUser = async (userId: string): Promise<any> => {
+  return await axios
+    .get(productUrl + '/index_by_user.json?user_id=' + userId, {
+      headers: requestHeader
+    })
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      console.error(error)
+      return null
+    })
+}

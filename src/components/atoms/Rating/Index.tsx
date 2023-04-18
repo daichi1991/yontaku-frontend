@@ -15,6 +15,7 @@ export const CommonRating: React.FC<Props> = (props: Props) => {
   return (
     <Rating
       name="text-feedback"
+      size="small"
       value={value === null ? ratingScore : value}
       readOnly={readOnly}
       onChange={(event, newValue) => {

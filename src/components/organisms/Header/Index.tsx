@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
@@ -178,7 +177,11 @@ export const Header: React.FC<Props> = (props: Props) => {
                           onClick={handleMenu}
                           color="inherit"
                         >
-                          <AccountCircleIcon />
+                          <CommonAvatar
+                            avatarImage={userInfo?.image.url}
+                            avatarAlt={'current user'}
+                            avatarSize={40}
+                          />
                         </IconButton>
                         <Menu
                           id="menu-appbar"

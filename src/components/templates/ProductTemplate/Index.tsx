@@ -1,9 +1,9 @@
-import { productType } from '../../../types'
+import { ProductType } from '../../../types'
 import { Header } from '../../organisms/Header/Index'
 import { ProductDetail } from '../../organisms/ProductDetail/Index'
 
 export interface Props {
-  product: productType
+  product: ProductType
 }
 
 export const ProductTemplate: React.FC<Props> = (props: Props) => {

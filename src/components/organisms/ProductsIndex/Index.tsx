@@ -1,14 +1,14 @@
 import { Box } from '@mui/material'
 import React from 'react'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
-import { productType } from '../../../types'
+import { ProductType } from '../../../types'
 import { ProductCard } from '../../molecules/ProductCard/Index'
 
 export interface Props {
-  products: productType[]
+  products: ProductType[]
 }
 
-export const ProductSearchResult: React.FC<Props> = (props: Props) => {
+export const ProductsIndex: React.FC<Props> = (props: Props) => {
   const { products } = props
   const { isMobileSite } = useMediaQueryContext()
 

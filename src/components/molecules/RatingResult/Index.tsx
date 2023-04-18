@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { CommonRating } from '../../atoms/Rating/Index'
 
 export interface Props {
@@ -11,18 +11,21 @@ export const RatingResult: React.FC<Props> = (props: Props) => {
   return (
     <Box
       sx={{
-        width: 200,
         display: 'flex',
         alignItems: 'center'
       }}
     >
-      <Box sx={{ mr: 1 }}>{ratingScore != null ? ratingScore.toFixed(1) : '-'}</Box>
+      <Typography variant="caption" color="text.secondary" component="div" sx={{ mr: 1 }}>
+        {ratingScore != null ? ratingScore.toFixed(1) : '-'}
+      </Typography>
       <CommonRating
         ratingScore={ratingScore != null ? ratingScore : 0}
         precision={0.5}
         readOnly={true}
       />
-      <Box sx={{ ml: 1 }}>&#40;{ratingAmount}&#41;</Box>
+      <Typography variant="caption" color="text.secondary" component="div" sx={{ ml: 1 }}>
+        &#40;{ratingAmount}&#41;
+      </Typography>
     </Box>
   )
 }

@@ -56,7 +56,7 @@ export interface UserType {
   active: boolean
 }
 
-export interface productType {
+export interface ProductType {
   id: string
   name: string
   description: string

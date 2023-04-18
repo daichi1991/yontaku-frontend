@@ -1,10 +1,9 @@
-import { productType } from '../../../types'
+import { ProductType } from '../../../types'
 import { Header } from '../../organisms/Header/Index'
-import { ProductSearchResult } from '../../organisms/ProductSearchResult/Index'
+import { ProductsIndex } from '../../organisms/ProductsIndex/Index'
 
 export interface Props {
-  subjectKey: string | undefined
-  products: productType[]
+  products: ProductType[]
 }
 
 export const SearchResultTemplate: React.FC<Props> = (props: Props) => {
@@ -13,7 +12,7 @@ export const SearchResultTemplate: React.FC<Props> = (props: Props) => {
   return (
     <>
       <Header menuIcon={true} accountIcon={true} />
-      <ProductSearchResult products={products} />
+      <ProductsIndex products={products} />
     </>
   )
 }

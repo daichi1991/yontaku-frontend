@@ -1,12 +1,12 @@
 import { Box, Card, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
-import { productType } from '../../../types'
+import { ProductType } from '../../../types'
 import { CommonImage } from '../../atoms/Image/Index'
 import { RatingResult } from '../RatingResult/Index'
 
 export interface Props {
-  product: productType
+  product: ProductType
 }
 
 export const ProductCard: React.FC<Props> = (props: Props) => {
@@ -55,17 +55,22 @@ export const ProductCard: React.FC<Props> = (props: Props) => {
       </Box>
       <Box sx={{ ml: 2, display: 'flex', alignItems: 'center', paddingTop: 1, paddingBottom: 1 }}>
         <Box>
-          <Typography component="div" variant="h6">
+          <Typography variant="body1" component="div" sx={{ fontWeight: 'bold' }}>
             {product.name}
           </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Typography variant="caption" color="text.secondary" component="div">
             {product.user.username}
           </Typography>
           <RatingResult ratingScore={product.rate.score} ratingAmount={product.rate.amount} />
-          <Typography variant="subtitle1" color="text.secondary" component="div">
+          <Typography variant="caption" color="text.secondary" component="div">
             {product.question_amount}問
           </Typography>
-          <Typography variant="h5" color="text.Primary" component="div">
+          <Typography
+            variant="body1"
+            color="text.Primary"
+            component="div"
+            sx={{ fontWeight: 'bold' }}
+          >
             ¥{product.sale.price.toLocaleString()}
           </Typography>
         </Box>

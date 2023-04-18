@@ -1,10 +1,10 @@
 import { Box, Typography } from '@mui/material'
-import { productType } from '../../../types'
+import { ProductType } from '../../../types'
 import { CommonImage } from '../../atoms/Image/Index'
 import { RatingResult } from '../../molecules/RatingResult/Index'
 
 export interface Props {
-  product: productType
+  product: ProductType
 }
 
 export const ProductDetail: React.FC<Props> = (props: Props) => {

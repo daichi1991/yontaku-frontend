@@ -11,7 +11,6 @@ const Template: Story<Props> = (args) => <SearchResultTemplate {...args} />
 export const Index = Template.bind({})
 
 Index.args = {
-  subjectKey: 'english',
   products: [
     {
       id: '56275d09-d68a-43db-a0e1-a08afd4e54ee',

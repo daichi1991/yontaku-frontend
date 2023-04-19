@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { RouteAuthGuard } from './RouteAuthGuard'
+import { Dashboard } from './pages/Dashboard/Index'
 import { EditUserProfile } from './pages/EditUserProfile/Index'
 import { Home } from './pages/Home/Index'
 import { Product } from './pages/Product/Index'
@@ -22,6 +23,7 @@ export const Container: React.FC = () => {
           path={'/user/profile/edit'}
           element={<RouteAuthGuard component={<EditUserProfile />} />}
         />
+        <Route path={'/dashboard'} element={<RouteAuthGuard component={<Dashboard />} />} />
       </Routes>
     </BrowserRouter>
   )

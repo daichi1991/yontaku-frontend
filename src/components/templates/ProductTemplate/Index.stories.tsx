@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { ProductTemplate, Props } from '../../templates/ProductTemplate/Index'
+import { ProductTemplate, Props } from './Index'
 
 const StoryBook: Meta<Props> = {
   title: 'Templates/ProductTemplate',

@@ -6,18 +6,15 @@ import { Typography } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
 import Toolbar from '@mui/material/Toolbar'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getProductSearchByKeyword } from '../../../apis/product'
-import { AuthUserContext } from '../../../contexts/authUserContext'
 import { useMediaQueryContext } from '../../../contexts/mediaQueryContext'
 import { HeaderType } from '../../../types'
-import { CommonAvatar } from '../../atoms/Avatar/Index'
 import { CommonLink } from '../../atoms/Link/Index'
 import { SearchBox } from '../../atoms/SearchBox/Index'
+import { HeaderMenu } from '../../molecules/HeaderMenu/Index'
 
 export interface Props extends HeaderType {}
 
@@ -25,28 +22,12 @@ export const Header: React.FC<Props> = (props: Props) => {
   const navigate = useNavigate()
   const { menuIcon, accountIcon } = props
   const { isPcSite } = useMediaQueryContext()
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [onSearchBox, setOnSearchBox] = useState<boolean>(false)
-  const { isAuthenticated, setIsAuthenticated, userInfo } = useContext(AuthUserContext)
 
   const headerLinkStyle = css({
     color: '#fff',
     textDecoration: 'none'
   })
-
-  const handleMenu = (event: React.MouseEvent<HTMLElement>): void => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = (): void => {
-    setAnchorEl(null)
-  }
-
-  const handleSignOut = (): void => {
-    setIsAuthenticated(false)
-    setAnchorEl(null)
-    navigate('/signin')
-  }
 
   const handleOnSearchBox = (): void => {
     setOnSearchBox(!onSearchBox)
@@ -59,10 +40,6 @@ export const Header: React.FC<Props> = (props: Props) => {
         products: data
       }
     })
-  }
-
-  const handleGotoEditUserProfile = (): void => {
-    navigate('/user/profile/edit')
   }
 
   return (
@@ -90,38 +67,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                   <div style={{ flexGrow: 1 }}>
                     <SearchBox elevation={0} clickFunction={handleProductSearchByKeyword} />
                   </div>
-                  {isAuthenticated ? (
-                    <div>
-                      <IconButton
-                        size="large"
-                        aria-label="account of current user"
-                        aria-controls="menu-appbar"
-                        aria-haspopup="true"
-                        onClick={handleMenu}
-                        color="inherit"
-                      >
-                        <CommonAvatar
-                          avatarImage={userInfo?.image.url}
-                          avatarAlt={'current user'}
-                          avatarSize={40}
-                        />
-                      </IconButton>
-                      <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={handleGotoEditUserProfile}>アカウント設定</MenuItem>
-                        <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
-                      </Menu>
-                    </div>
-                  ) : (
-                    <div>
-                      <CommonLink linkTo="/signin" linkText="ログイン" linkCss={headerLinkStyle} />
-                    </div>
-                  )}
+                  <HeaderMenu />
                 </>
               )}
             </>
@@ -167,42 +113,7 @@ export const Header: React.FC<Props> = (props: Props) => {
                     >
                       <SearchIcon />
                     </IconButton>
-                    {isAuthenticated ? (
-                      <div>
-                        <IconButton
-                          size="large"
-                          aria-label="account of current user"
-                          aria-controls="menu-appbar"
-                          aria-haspopup="true"
-                          onClick={handleMenu}
-                          color="inherit"
-                        >
-                          <CommonAvatar
-                            avatarImage={userInfo?.image.url}
-                            avatarAlt={'current user'}
-                            avatarSize={40}
-                          />
-                        </IconButton>
-                        <Menu
-                          id="menu-appbar"
-                          anchorEl={anchorEl}
-                          keepMounted
-                          open={Boolean(anchorEl)}
-                          onClose={handleClose}
-                        >
-                          <MenuItem onClick={handleGotoEditUserProfile}>アカウント設定</MenuItem>
-                          <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
-                        </Menu>
-                      </div>
-                    ) : (
-                      <div>
-                        <CommonLink
-                          linkTo="/signin"
-                          linkText="ログイン"
-                          linkCss={headerLinkStyle}
-                        />
-                      </div>
-                    )}
+                    <HeaderMenu />
                   </>
                 )}
               </>

@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { HomeTemplate } from '../../templates/HomeTemplate/Index'
+import { HomeTemplate } from './Index'
 
 const StoryBook: Meta = {
   title: 'Templates/HomeTemplate',

@@ -1,12 +1,12 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { EditUserProfile } from '../EditUserProfile/Index'
+import { UserProfile } from './Index'
 
 const StoryBook: Meta = {
-  title: 'Pages/EditUserProfile',
-  component: EditUserProfile
+  title: 'Pages/UserProfile',
+  component: UserProfile
 }
 
-const Template: Story = () => <EditUserProfile />
+const Template: Story = () => <UserProfile />
 
 export const Index = Template.bind({})
 

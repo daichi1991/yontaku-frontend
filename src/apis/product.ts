@@ -48,3 +48,21 @@ export const getProductSearchByUser = async (userId: string): Promise<any> => {
       return null
     })
 }
+
+export const getProductSearchByCurrentUser = async (idToken: string): Promise<any> => {
+  const requestUrl = productUrl + '/my_products.json'
+  return await axios
+    .request({
+      method: 'get',
+      url: requestUrl,
+      headers: { Authorization: `Bearer ${idToken}` },
+      withCredentials: true
+    })
+    .then((res) => {
+      return res.data
+    })
+    .catch((error) => {
+      console.error(error)
+      return null
+    })
+}

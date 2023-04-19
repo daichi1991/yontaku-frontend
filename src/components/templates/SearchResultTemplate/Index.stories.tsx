@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { Props, SearchResultTemplate } from '../../templates/SearchResultTemplate/Index'
+import { Props, SearchResultTemplate } from './Index'
 
 const StoryBook: Meta<Props> = {
   title: 'Templates/SearchResultTemplate',

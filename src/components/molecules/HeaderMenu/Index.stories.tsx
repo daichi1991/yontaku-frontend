@@ -1,12 +1,12 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { Product } from './Index'
+import { HeaderMenu } from './Index'
 
 const StoryBook: Meta = {
-  title: 'Pages/Product',
-  component: Product
+  title: 'Molecules/HeaderMenu',
+  component: HeaderMenu
 }
 
-const Template: Story = (args) => <Product {...args} />
+const Template: Story = () => <HeaderMenu />
 
 export const Index = Template.bind({})
 

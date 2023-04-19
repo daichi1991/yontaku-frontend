@@ -79,7 +79,7 @@ export const UserProfile: React.FC<Props> = (props: Props) => {
           </Grid>
           <Box css={productsBlock}>
             <Typography variant="h6" component="h6" sx={{ fontWeight: 'bold', mt: 1, mb: 2 }}>
-              出品商品
+              教材一覧
             </Typography>
             <ProductsIndex products={products} />
           </Box>

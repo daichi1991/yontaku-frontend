@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0'
-import { Home } from '../../pages/Home/Index'
+import { Home } from './Index'
 
 const StoryBook: Meta = {
   title: 'Pages/Home',

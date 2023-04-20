@@ -23,6 +23,10 @@ export const HeaderMenu: React.FC = () => {
     setAnchorEl(null)
   }
 
+  const handleGotoDashboard = (): void => {
+    navigate('/dashboard')
+  }
+
   const handleGotoEditUserProfile = (): void => {
     navigate('/user/profile/edit')
   }
@@ -58,7 +62,7 @@ export const HeaderMenu: React.FC = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleGotoEditUserProfile}>教材の管理</MenuItem>
+            <MenuItem onClick={handleGotoDashboard}>教材の管理</MenuItem>
             <MenuItem onClick={handleGotoEditUserProfile}>アカウント設定</MenuItem>
             <MenuItem onClick={handleSignOut}>ログアウト</MenuItem>
           </Menu>

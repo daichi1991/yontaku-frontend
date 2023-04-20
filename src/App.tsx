@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@emotion/react'
-import { Container } from './components/Container'
+import { RouteContainer } from './components/RouteContainer'
 import { AuthUserProvider } from './contexts/authUserContext'
 import { MediaQueryProvider } from './contexts/mediaQueryContext'
 import { theme } from './styles/theme'
@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <MediaQueryProvider>
         <AuthUserProvider>
-          <Container />
+          <RouteContainer />
         </AuthUserProvider>
       </MediaQueryProvider>
     </ThemeProvider>

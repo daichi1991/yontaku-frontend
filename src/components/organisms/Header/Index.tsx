@@ -43,7 +43,7 @@ export const Header: React.FC<Props> = (props: Props) => {
   }
 
   return (
-    <Box sx={{ mr: 'calc(50% - 50vw)', ml: 'calc(50% - 50vw)', flexGrow: 1 }}>
+    <Box sx={{ mr: 'calc(50% - 50vw)', ml: 'calc(50% - 50vw)', flexGrow: 1, marginBottom: 2 }}>
       <AppBar position="static" color="primary">
         <Toolbar>
           {isPcSite === true && (

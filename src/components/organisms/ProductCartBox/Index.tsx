@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material'
+import Card from '@mui/material/Card'
 import { ProductType } from '../../../types'
+import { CommonButton } from '../../atoms/Button/Index'
 import { CommonImage } from '../../atoms/Image/Index'
 
 export interface Props {
@@ -12,18 +14,34 @@ export const ProductCartBox: React.FC<Props> = (props: Props) => {
   const prodcutImage = product.image != null ? product.image : defaultImage
   return (
     <>
-      <Box sx={{ width: 240 }}>
+      <Card
+        sx={{
+          width: 300,
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          paddingBottom: 2
+        }}
+      >
         <CommonImage
           image={prodcutImage}
           imageTitleFilter={false}
           imageStyle={{ width: '100%', maxHeight: 200 }}
         />
-        <Box>
-          <Typography variant="h5" color="text.Primary" component="div">
+        <Box sx={{ width: 260, margin: 'auto' }}>
+          <Typography variant="h5" color="text.Primary" component="div" sx={{ marginTop: 2 }}>
             ¥{product.sale.price.toLocaleString()}
           </Typography>
+          <CommonButton
+            variant="contained"
+            buttonText="カートに入れる"
+            handleFunction={function () {
+              throw new Error('Function not implemented.')
+            }}
+            style={{ width: '100%', marginTop: 2 }}
+          />
         </Box>
-      </Box>
+      </Card>
     </>
   )
 }
